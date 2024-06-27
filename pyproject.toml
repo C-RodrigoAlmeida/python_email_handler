@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "email-handler"
+version = "0.1.0"
+description = "Email handler that communicates with Outlook. This project allows you read XLSX files in order to fetch emails to send in mass, and also store contacts, messages in a SQLite DB"
+authors = ["Rodrigo Almeida <c.almeidarodrigo@gmail.com>, Roberta Ferraz <robertaferraz100@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+django = "^5.0.6"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
