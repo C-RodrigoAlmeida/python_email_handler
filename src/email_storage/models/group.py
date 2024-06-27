@@ -7,6 +7,5 @@ class Group(BaseModel):
     description = models.CharField(max_length=1024)    
     recipients = models.ManyToManyField(Recipient, related_name="groups")
     
-
     def __str__(self) -> str:
         return self.name

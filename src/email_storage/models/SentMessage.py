@@ -14,7 +14,7 @@ class SentMessage(BaseModel):
         constraints = [
             models.CheckConstraint(
             check=Q(groups__isnull=False) | Q(recipients__isnull=False),
-            name="group_or_recipient",)
+            name="group_or_recipient")
         ]
 
     def __str__(self) -> str:
