@@ -1,7 +1,7 @@
 from django.db import models
 from django.db.models import Q
-from email_storage.models.group import Group
-from email_storage.models.recipient import Recipient
+from src.email_storage.models.group import Group
+from src.email_storage.models.recipient import Recipient
 from src.core.base_model import BaseModel
 from django.conf import settings
 
@@ -19,7 +19,8 @@ class SentMessage(BaseModel):
                 name="group_or_recipient"
             ),
             models.CheckConstraint(
-                check=Q(sent_by__isnull=False)
+                check=Q(sent_by__isnull=False),
+                name="sentby_cantbe_null"
             ),
         ]
 
