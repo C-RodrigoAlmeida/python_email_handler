@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import SentMessage, Group, Recipient, MessageTemplate
+from email_storage.models import SentMessage, Group, Recipient, MessageTemplate
 
 # Register your models here.
 
