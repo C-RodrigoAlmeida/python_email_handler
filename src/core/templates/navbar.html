@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+<nav class="container mx-auto bg-slate-900 border-black border-solid border outline-1 w-9/12 opacity-90">
+    <ul class="flex justify-around">
+        <li><a href="">Home</a></li>
+        <li><a href="">About</a></li>
+        {% if user.is_authenticated %}
+        <li><a href="">Logout</a></li>
+        {% else %}
+        <li><a href="">Login</a></li>
+        <li><a href="">Register</a></li>
+        {% endif %}
+    </ul>
+</nav>

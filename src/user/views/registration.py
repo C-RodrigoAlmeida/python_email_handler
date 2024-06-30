@@ -1,6 +1,6 @@
 from django.views.generic import TemplateView
-from django.contrib.auth.models import User
-from user.forms.registration import RegistrationForm
+from src.user.models.custom_user import CustomUser
+from src.user.forms.registration import RegistrationForm
 
 class RegistrationView(TemplateView):
     template_name = "user/registration.html"
@@ -13,8 +13,9 @@ class RegistrationView(TemplateView):
     def post(self, request, *args, **kwargs):
         form = RegistrationForm(request.POST)
         if form.is_valid():
-            user = User.objects.create_user(
-                username=form.cleaned_data["username"],
+            user = CustomUser.objects.create_user(
+                employee_id=form.cleaned_data["employee_id"],
+                name=form.cleaned_data["username"],
                 email=form.cleaned_data["email"],
                 password=form.cleaned_data["password"],
             )

@@ -5,3 +5,4 @@ from src.core.base_model import BaseModel
 
 class CustomUser(BaseModel, AbstractUser): 
     employee_id = models.CharField(max_length=4, unique=True, db_index=True, validators=[alphanumeric])
+    name = models.CharField(max_length=100, null=False)

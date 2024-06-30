@@ -1,7 +1,7 @@
-from django.contrib.auth.models import User
+from src.user.models.custom_user import CustomUser
 from django.forms import ModelForm
 
 class LoginForm(ModelForm):
     class Meta:
-        model = User
+        model = CustomUser
         fields = ['employee_id', 'password']
