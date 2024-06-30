@@ -7,8 +7,12 @@
     <title>Document</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
+{% if user.is_authenticated %}
+{% else %}
+{% include 'navbar.html' %}
+{% endif %}
 
-<body class="bg-slate-800">
+<body class="bg-gray-800 text-white">
     {% block content %}
     {% endblock %}
 </body>

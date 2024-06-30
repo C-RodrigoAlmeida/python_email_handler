@@ -1,14 +1,13 @@
-{% extends 'base.html' %}
-
-<nav class="container mx-auto bg-slate-900 border-black border-solid border outline-1 w-9/12 opacity-90">
-    <ul class="flex justify-around">
-        <li><a href="">Home</a></li>
-        <li><a href="">About</a></li>
-        {% if user.is_authenticated %}
-        <li><a href="">Logout</a></li>
-        {% else %}
-        <li><a href="">Login</a></li>
-        <li><a href="">Register</a></li>
-        {% endif %}
-    </ul>
+<nav class="sticky mt-8 container mx-auto bg-gray-900 border-black border-solid border outline-1 w-9/12 py-5 opacity-90 rounded-xl">
+        <ul class="grid grid-cols-4 gap-4">
+            <div class="justify-center">
+                <li class="font-extrabold text-xl"><a href="">Home</a></li>
+            </div>
+            <li class="justify-start text-md"><a href="">About</a></li>
+            <div></div>
+            <div class="flex justify-around text-md">
+                <li><a href="">Login</a></li>
+                <li><a href="">Register</a></li>
+            </div>
+        </ul>
 </nav>
