@@ -9,4 +9,4 @@ class CustomUser(BaseModel, AbstractUser):
     name = models.CharField(max_length=100, null=False)
 
     USERNAME_FIELD = "employee_id"
-    REQUIRED_FIELDS = ["employee_id", "password"]
+    REQUIRED_FIELDS = ["password"]
