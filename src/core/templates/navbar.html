@@ -1,6 +1,6 @@
 <nav class="sticky bg-slate-900 border-b-2 border-slate-700 py-5">
     <ul class="container mx-auto grid grid-cols-12 gap-4 px-20">
-        <li class="font-extrabold text-xl hover:text-cyan-400"><a href="">Home</a></li>
+        <li class="font-extrabold text-xl hover:text-cyan-400"><a href="{% url 'home:home' %}">Home</a></li>
         <li class="text-xl hover:text-cyan-400"><a href="">About</a></li>
         <li></li>
         <li></li>
@@ -10,7 +10,7 @@
         <li></li>
         <li></li>
         <li></li>
-        <li class="text-xl text-right hover:text-cyan-400"><a href="">Login</a></li>
-        <li class="text-xl text-right hover:text-cyan-400"><a href="">Register</a></li>
+        <li class="text-xl text-right hover:text-cyan-400"><a href="{% url 'user:login' %}">Login</a></li>
+        <li class="text-xl text-right hover:text-cyan-400"><a href="{% url 'user:registration' %}">Register</a></li>
     </ul>
 </nav>
