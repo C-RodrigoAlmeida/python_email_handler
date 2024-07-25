@@ -1,7 +1,19 @@
-from src.user.models.custom_user import CustomUser
-from django.forms import ModelForm
+from django import forms
+from django.contrib.auth.forms import AuthenticationForm
 
-class LoginForm(ModelForm):
-    class Meta:
-        model = CustomUser
-        fields = ['employee_id', 'password']
+
+class LoginForm(AuthenticationForm):
+    username = forms.CharField(
+        label="Employee ID",
+        max_length=4,
+        widget=forms.TextInput(attrs={
+            'class': 'form-control bg-slate-800', 'placeholder': 'Employee ID',
+        }),
+    )
+
+    password = forms.CharField(
+        label="Password",
+        widget=forms.PasswordInput(attrs={
+            'class': 'form-control bg-slate-800', 'placeholder': 'Password',
+        }),
+    )

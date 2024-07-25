@@ -1,9 +1,6 @@
-from django.views.generic import FormView
+from django.contrib.auth.views import LoginView
 from src.user.forms.login import LoginForm
 
-class LoginView(FormView):
+class LoginView(LoginView):
     template_name = "login.html"
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context["form"] = LoginForm
+    form_class = LoginForm
