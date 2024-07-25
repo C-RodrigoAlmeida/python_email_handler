@@ -3,9 +3,9 @@ from django.contrib.auth.forms import AuthenticationForm
 
 
 class LoginForm(AuthenticationForm):
-    fields = ['username', 'password']
+    fields = ['employee_id', 'password']
     widgets = {
-        'username': forms.TextInput(attrs={'style': 'text-transform:uppercase;'}),
+        'employee_id': forms.TextInput(attrs={'style': 'text-transform:uppercase;'}),
         'password': forms.PasswordInput()
     }
 

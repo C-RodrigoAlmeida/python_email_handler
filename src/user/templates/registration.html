@@ -3,10 +3,11 @@
 {% block content %}
 <div class="flex items-center justify-center min-h-screen">
     <div class="box-content bg-slate-800 pb-10 pt-10 px-10 py-10 m-5 rounded">
-        <h1>Registration</h1>
+        <h1 class="text-center text-white text-3xl mb-10">Registration</h1>
         <form action="" method="post">
             {{ form.as_p }}
         </form>
+        <input type="submit" value="Login" class="btn btn-primary btn-block mt-3 p-2 bg-indigo-500 hover:bg-indigo-600 rounded">
     </div>
 </div>
 {% endblock %} 
