@@ -14,10 +14,10 @@ class SentMessage(BaseModel):
 
     class Meta:
         constraints = [
-            models.CheckConstraint(
-                check=Q(groups__isnull=False) | Q(recipients__isnull=False),
-                name="group_or_recipient"
-            ),
+            # models.CheckConstraint(
+            #     check=Q(groups__isnull=False) | Q(recipients__isnull=False),
+            #     name="group_or_recipient"
+            # ),
             models.CheckConstraint(
                 check=Q(sent_by__isnull=False),
                 name="sentby_cantbe_null"
@@ -26,3 +26,5 @@ class SentMessage(BaseModel):
 
     def __str__(self) -> str:
         return self.subject
+
+        
