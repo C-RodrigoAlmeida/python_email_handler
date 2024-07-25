@@ -1,11 +1,15 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>Login</h1>
+<div class="flex items-center justify-center min-h-screen">
+    <div class="box-content bg-slate-800 pb-10 pt-10 px-10 py-10 m-5 rounded">
+        <h1 class="text-center text-white text-3xl mb-10">Login</h1>
+        <form method="post" action="{% url 'user:login' %}">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" value="Login" class="btn btn-primary btn-block mt-3 p-2 bg-indigo-500 hover:bg-indigo-600 rounded">
+        </form>
+    </div>
+</div>
 
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="Login">
-</form>
 {% endblock %}
