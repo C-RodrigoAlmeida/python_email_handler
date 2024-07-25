@@ -3,9 +3,10 @@
 {% block content %}
 <div class="flex items-center justify-center min-h-screen">
     <div class="box-content bg-slate-800 pb-10 pt-10 px-10 py-10 m-5 rounded">
-    <h1>Registration</h1>
-    <form method="post" action="{% url 'user:registration' %}">
-    {{ form_class }}
+        <h1>Registration</h1>
+        <form action="" method="post">
+            {{ form.as_p }}
+        </form>
     </div>
 </div>
-{% endblock %}
+{% endblock %} 
