@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "src.user",
-    "src.email_storage",
+    "src.inbox",
     "src.home", 
 ]
 

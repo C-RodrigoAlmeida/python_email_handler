@@ -1,7 +1,7 @@
 from django.db import models
 from django.db.models import Q
-from src.email_storage.models.group import Group
-from src.email_storage.models.recipient import Recipient
+from src.inbox.models.group import Group
+from src.inbox.models.recipient import Recipient
 from src.core.base_model import BaseModel
 from django.conf import settings
 

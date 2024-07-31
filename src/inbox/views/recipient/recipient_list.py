@@ -1,4 +1,4 @@
-from email_storage.models.recipient import Recipient
+from inbox.models.recipient import Recipient
 from django.views.generic import ListView
 
 class RecipientListView(ListView):

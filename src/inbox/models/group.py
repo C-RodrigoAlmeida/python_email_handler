@@ -1,5 +1,5 @@
 from django.db import models
-from src.email_storage.models.recipient import Recipient
+from src.inbox.models.recipient import Recipient
 from src.core.base_model import BaseModel
 
 class Group(BaseModel):
