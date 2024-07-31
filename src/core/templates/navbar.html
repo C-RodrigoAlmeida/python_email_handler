@@ -10,7 +10,12 @@
         <li></li>
         <li></li>
         <li></li>
+        {% if user.is_authenticated %}
+        <li class="text-xl text-right hover:text-cyan-400"><a href="{% url 'user:profile' %}">Profile</a></li>
+        <li class="text-xl text-right hover:text-cyan-400"><a href="{% url 'user:logout' %}">Logout</a></li>
+        {% else %}
         <li class="text-xl text-right hover:text-cyan-400"><a href="{% url 'user:login' %}">Login</a></li>
         <li class="text-xl text-right hover:text-cyan-400"><a href="{% url 'user:registration' %}">Register</a></li>
+        {%endif%}
     </ul>
 </nav>
