@@ -7,12 +7,12 @@
     <title>Document</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-{% if user.is_authenticated %}
+{% if user.Is_authenticated %}
+{% include 'sidebar.html' %}
 {% else %}
 {% include 'navbar.html' %}
 {% endif %}
 
-{% include 'sidebar.html' %}
 
 <body class="bg-slate-900 text-white">
 
