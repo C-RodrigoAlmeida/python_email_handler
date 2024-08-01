@@ -6,5 +6,5 @@ from src.inbox.forms.message_template import MessageTemplateForm
 class MessageTemplateCreateView(CreateView):
     model = MessageTemplate
     form_class = MessageTemplateForm
-    template_name = "message_template_create.html"
-    success_url = "message_template_list"
+    template_name = "message_template_creation.html"
+    success_url = "inbox:message_template_list"

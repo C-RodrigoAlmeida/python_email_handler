@@ -1,5 +1,7 @@
-from django import forms
+from django.forms import ModelForm
+from src.inbox.models.message_template import MessageTemplate
 
-class MessageTemplateForm(forms.Form):
-    subject = forms.CharField(max_length=100)
-    content = forms.CharField(widget=forms.Textarea)
+class MessageTemplateForm(ModelForm):
+    class Meta:
+        model = MessageTemplate
+        fields = ['subject', 'message']

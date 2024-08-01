@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<form>
+    <div class="flex items-center justify-center min-h-screen">
+        <div class="box-content bg-gray-500 pb-20 pt-20 px-20 py-20 m-5 rounded">
+            <h1 class="text-center font-bold text-black text-3xl mb-20">Message Template List:</h1>
+
+            {% for template in templates %}
+                {{ template.subject }}
+                {{ template.message }}
+                <br>
+            {% endfor %}
+
+        </div>
+    </div>
+{% endblock %}
