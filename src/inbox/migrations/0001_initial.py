@@ -66,7 +66,7 @@ class Migration(migrations.Migration):
                 (
                     "recipients",
                     models.ManyToManyField(
-                        related_name="groups", to="email_storage.recipient"
+                        related_name="groups", to="inbox.recipient"
                     ),
                 ),
             ],
@@ -86,13 +86,13 @@ class Migration(migrations.Migration):
                 (
                     "groups",
                     models.ManyToManyField(
-                        related_name="messages", to="email_storage.group"
+                        related_name="messages", to="inbox.group"
                     ),
                 ),
                 (
                     "recipients",
                     models.ManyToManyField(
-                        related_name="messages", to="email_storage.recipient"
+                        related_name="messages", to="inbox.recipient"
                     ),
                 ),
             ],
