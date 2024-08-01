@@ -8,3 +8,10 @@ class RegistrationView(CreateView):
     form_class = RegistrationForm
     template_name = "registration.html"
     success_url = reverse_lazy('user:login')
+
+    def form_valid(self, form):
+        user = form.save(commit=False)
+        user.username = user.employee_id 
+        user.set_password(form.cleaned_data['password'])
+        user.save()
+        return super().form_valid(form)
