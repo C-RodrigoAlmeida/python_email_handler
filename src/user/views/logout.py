@@ -1,5 +1,4 @@
 from django.contrib.auth.views import LogoutView
-from django.shortcuts import redirect
 
 class UserLogout(LogoutView):
     def get_next_page(self):
