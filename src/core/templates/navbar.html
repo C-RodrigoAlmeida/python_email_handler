@@ -1,46 +1,11 @@
- {% comment %} <nav class="sticky bg-gray-400 border-b-2 border-green-700 py-5">
-    <ul class="container mx-auto grid grid-cols-12 gap-4 px-20">
-        <li class="font-extrabold text-xl hover:text-amber-400"><a href="{% url 'home:home' %}">Home</a></li>
-        <li class="text-xl hover:text-amber-400"><a href="{% url 'home:about' %}">About</a></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        {% if user.is_authenticated %}
-        <li class="text-xl text-right hover:text-amber-400"><a href="{% url 'user:profile' %}">Profile</a></li>
-        <li class="text-xl text-right hover:text-amber-400">
-            <form id="logout-form" method="POST" action="{% url 'user:logout' %}">
-                {% csrf_token %}
-                <button type="submit">Logout</button>
-            </form>
-        </li>
-        {% else %}
-        <li class="text-xl text-right hover:text-amber-400"><a href="{% url 'user:login' %}">Login</a></li>
-        <li class="text-xl text-right hover:text-amber-400"><a href="{% url 'user:registration' %}">Register</a></li>
-        {%endif%}
-    </ul>
-</nav>  {% endcomment %}
-
-
-
-<nav class="bg-gray-200 fixed w-full z-20 top-0 start-0 border-b border-gray-200">
+<nav class="bg-gray-300/75 fixed w-full z-20 top-0 start-0 backdrop-blur border-b-2 border-green-900">
     <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
         <li class="flex items-center space-x-3 rtl:space-x-reverse">
             <span class="self-center text-2xl font-semibold whitespace-nowrap">EasyMail</span>
         </li>
-        <div class="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
-            <a href="{% url 'user:registration' %}" class="font-bold text-black bg-amber-400 hover:text-white hover:bg-emerald-600 rounded-lg text-sm px-4 py-2 mx-4 text-center">Register</a>
-            <a data-collapse-toggle="navbar-sticky" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200" aria-controls="navbar-sticky" aria-expanded="false">
-                <span class="sr-only">Open main menu</span>
-            </a>
-            <a href="{% url 'user:login' %}" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent hover:text-green-800 md:p-0">Login</a>
-        </div>
+
         <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-sticky">
-            <ul class="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-gray-200">
+            <ul class="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0">
                 <li>
                     <a href="{% url 'home:home' %}" class="block py-2 px-3 text-gray-900 rounded hover:text-green-800 md:p-0 " aria-current="page">Home</a>
                 </li>
@@ -48,6 +13,14 @@
                     <a href="{% url 'home:about' %}" class="block py-2 px-3 text-gray-900 rounded hover:text-green-800 md:p-0 ">About</a>
                 </li>
             </ul>
+        </div>
+
+        <div class="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
+            <a href="{% url 'user:registration' %}" class="font-bold text-black bg-amber-400 hover:text-white hover:bg-emerald-600 rounded-lg text-sm px-4 py-2 mx-4 text-center">Register</a>
+            <a href="{% url 'user:login' %}" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent hover:text-green-800">Login</a>
+            <a data-collapse-toggle="navbar-sticky" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200" aria-controls="navbar-sticky" aria-expanded="false">
+                <span class="sr-only">Open main menu</span>
+            </a>
         </div>
     </div>
 </nav>
