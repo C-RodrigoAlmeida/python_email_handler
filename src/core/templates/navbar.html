@@ -15,6 +15,12 @@
             </ul>
         </div>
 
+        {% if user.is_authenticated %}
+        <div class="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
+            <a href="{% url 'user:profile' %}" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent hover:text-green-800">Profile</a>
+            <a href="{% url 'user:logout' %}" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent hover:text-green-800">logout</a>
+        </div>
+        {% else %}
         <div class="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
             <a href="{% url 'user:registration' %}" class="font-bold text-black bg-amber-400 hover:text-white hover:bg-emerald-600 rounded-lg text-sm px-4 py-2 mx-4 text-center">Register</a>
             <a href="{% url 'user:login' %}" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent hover:text-green-800">Login</a>
@@ -22,5 +28,6 @@
                 <span class="sr-only">Open main menu</span>
             </a>
         </div>
+        {% endif %}
     </div>
 </nav>
