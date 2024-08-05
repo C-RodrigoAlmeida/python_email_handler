@@ -1,0 +1,21 @@
+<nav class="bg-gray-300/75 fixed w-full z-20 top-0 start-0 backdrop-blur border-b-2 border-green-900">
+    <div class="max-w-screen-xl flex flex-row py-4">
+        <div class="flex space-x-3 basis-1/4 border-r-2 border-green-900">
+            <a href="{%url 'user:panel'}" class="self-center mx-auto text-2xl font-semibold whitespace-nowrap">EasyMail</a>
+        </div>
+
+        <div class="flex basis-1/2 items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-sticky">
+            <ul class="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0">
+            </ul>
+        </div>
+
+
+        <div class="flex basis-1/4 md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse border-l-2 border-green-900">
+            <a href="{% url 'user:profile' %}" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent hover:text-green-800">Profile</a>
+            <a href="{% url 'user:logout' %}" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent hover:text-green-800">Logout</a>
+            <a data-collapse-toggle="navbar-sticky" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200" aria-controls="navbar-sticky" aria-expanded="false">
+                <span class="sr-only">Open main menu</span>
+            </a>
+        </div>
+    </div>
+</nav>

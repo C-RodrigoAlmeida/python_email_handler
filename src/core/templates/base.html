@@ -8,20 +8,25 @@
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-{% include 'navbar.html' %}
-{% include 'footer.html' %}
+
+
+
+
+
+
 
 {% if user.is_authenticated %}
+{% include 'navbar_authenticated.html'%}
+<body class="bg-gray-300 text-black">
 {% include 'sidebar.html' %}
-{% endif %}
 
-
-
+{% else %}
+{% include 'navbar_not_authenticated.html' %}
 <body class="bg-gray-300 text-black">
 
-    {% block content %}
-    {% endblock %}
+{% endif %}
 
+{% block content %}
+{% endblock %}
 </body>
-
 </html>
