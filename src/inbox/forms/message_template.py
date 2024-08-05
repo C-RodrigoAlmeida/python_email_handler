@@ -17,7 +17,7 @@ class MessageTemplateForm(ModelForm):
 
     def save(self, commit=True):
         instance = super(MessageTemplateForm, self).save(commit=False)
-        instance.contact_owner = self.user
+        instance.message_owner = self.user
         if commit:
             instance.save()
         return instance
