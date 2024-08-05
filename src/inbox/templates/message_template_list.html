@@ -2,15 +2,17 @@
 
 {% block content %}
 <form>
-    <div class="flex items-center justify-center min-h-screen">
-        <div class="box-content bg-gray-500 pb-20 pt-20 px-20 py-20 m-5 rounded">
+    <div class="flex justify-center min-h-screen">
+        <div class="box-content m-5 rounded">
             <h1 class="text-center font-bold text-black text-3xl mb-20">Message Template List:</h1>
 
+            <ol>
             {% for template in templates %}
-                {{ template.subject }}
-                {{ template.message }}
-                <br>
+                <li>
+                    <a>{{ template.subject }}</a>
+                </li>
             {% endfor %}
+            </ol>
 
         </div>
     </div>

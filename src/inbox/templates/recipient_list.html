@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<form>
+    <div class="flex justify-center min-h-screen">
+        <div class="box-content m-5 rounded">
+            <h1 class="text-center font-bold text-black text-3xl mb-20">Recipients List:</h1>
+
+            <ol>
+            {% for recipient in recipients %}
+                <li>
+                    <a>{{recipient.employee_id}} | {{ recipient.name }} {{ recipient.last_name }}</a>
+                </li>
+            {% endfor %}
+            </ol>
+
+        </div>
+    </div>
+{% endblock %}
