@@ -1,4 +1,4 @@
-<nav class="bg-gray-300/75 fixed w-full z-20 top-0 start-0 backdrop-blur border-b-2 border-green-900">
+<nav class="opacity-75 fixed w-full z-20 top-0 start-0 backdrop-blur border-b-2 border-green-900">
     <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
         <li class="flex items-center space-x-3 rtl:space-x-reverse">
             <a href="{% url 'home:home' %}" class="self-center text-2xl font-semibold whitespace-nowrap">EasyMail</a>
@@ -11,6 +11,7 @@
                 </li>
             </ul>
         </div>
+        
         <div class="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
             <a href="{% url 'user:registration' %}" class="font-bold text-black bg-amber-400 hover:text-white hover:bg-emerald-600 rounded-lg text-sm px-4 py-2 mx-4 text-center">Register</a>
             <a href="{% url 'user:login' %}" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent hover:text-green-800">Login</a>

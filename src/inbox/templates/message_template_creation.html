@@ -1,14 +1,12 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="flex items-center justify-center min-h-screen">
-    <div class="bg-gray-300/75 backdrop-blur pb-10 pt-10 px-10 border-2 border-green-900 m-5 rounded">
+<div class="items-center justify-center min-h-screen">
         <h1 class="text-center text-3xl mb-10">Message Template Creation</h1>
         <form action="" method="post">
             {% csrf_token %}
             {{ form.as_p }}
             <input type="submit" value="Save" class="btn btn-primary btn-block mt-3 p-2 bg-green-500 hover:bg-green-600 rounded">
         </form>
-    </div>
 </div>
 {% endblock %}

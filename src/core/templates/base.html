@@ -8,28 +8,20 @@
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-
-
-
-
-
-
-
-{% if user.is_authenticated %}
-{% include 'navbar_authenticated.html'%}
-<body class="w-full flex flex-row bg-gray-300 text-black relative">
-{% include 'sidebar.html' %}
-<div class='basis-3/4 relative'>
-
-{% else %}
-{% include 'navbar_not_authenticated.html' %}
 <body class="w-full bg-gray-300 text-black">
-<div>
+    {% if user.is_authenticated %}
+        {% include 'navbar_authenticated.html' %}
+        <div class="flex w-full mt-20">
+            {% include 'sidebar.html' %}
+            <div class="w-5/6">
+    {% else %}
+        {% include 'navbar_not_authenticated.html' %}
+        <div>
+    {% endif %}
 
-{% endif %}
-
-{% block content %}
-{% endblock %}
-</div>
+    {% block content %}
+    {% endblock %}
+    </div>
 </body>
+
 </html>
