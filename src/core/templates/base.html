@@ -17,16 +17,19 @@
 
 {% if user.is_authenticated %}
 {% include 'navbar_authenticated.html'%}
-<body class="bg-gray-300 text-black">
+<body class="w-full flex flex-row bg-gray-300 text-black relative">
 {% include 'sidebar.html' %}
+<div class='basis-3/4 relative'>
 
 {% else %}
 {% include 'navbar_not_authenticated.html' %}
-<body class="bg-gray-300 text-black">
+<body class="w-full bg-gray-300 text-black">
+<div>
 
 {% endif %}
 
 {% block content %}
 {% endblock %}
+</div>
 </body>
 </html>
