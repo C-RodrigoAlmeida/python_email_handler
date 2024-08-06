@@ -9,7 +9,7 @@
             <ol>
             {% for template in templates %}
                 <li>
-                    <a href="">{{ template.subject }}</a>
+                    <a href="{% url 'inbox:message_template_detail' template.id %}">{{ template.subject }}</a>
                 </li>
             {% empty %}
                 <h3>No message template registered</h3>

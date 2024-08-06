@@ -9,9 +9,8 @@
             <ol>
             {% for recipient in recipients %}
                 <li>
-                    <a>{{recipient.employee_id}} | {{ recipient.name }} {{ recipient.last_name }}</a>
+                    <a href="{% url 'inbox:recipient_detail' recipient.id %}">{{recipient.employee_id}} | {{ recipient.name }} {{ recipient.last_name }}</a>
                 </li>
-
             {% empty %}
             <h3>No recipient registered</h3>
             {% endfor %}

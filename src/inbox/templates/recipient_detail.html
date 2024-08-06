@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1 class="text-center font-bold text-black text-3xl mb-20">Recipient Detail:</h1>
+<h3>Name:</h3> <h3>{{ recipient.name }}</h3>
+<h3>Last name:</h3> <h3>{{ recipient.last_name }}</h3>
+<h3>Employee ID:</h3><h3>{{ recipient.employee_id }}</h3>
+<h3>Email:</h3> <h3>{{ recipient.email }}</h3>
+{% endblock %}
