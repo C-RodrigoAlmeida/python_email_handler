@@ -2,20 +2,42 @@
 
 {% block content %}
 <form>
-    <div class="flex justify-center min-h-screen">
-        <div class="box-content m-5 rounded">
-            <h1 class="text-center font-bold text-black text-3xl mb-20">Recipients List:</h1>
+    <div class="relative overflow-x-auto m-5 rounded-lg">
+        <h1 class="text-center font-bold text-black text-3xl mb-20">Recipients List:</h1>
 
-            <ol>
+        <table class="w-full text-sm text-left rtl:text-right text-gray-500">
+            <thead class="text-xs font-bold text-gray-700 uppercase bg-slate-300">
+                <tr>
+                    <th class="px-6 py-3">Name</th>
+                    <th>Last Name</th>
+                    <th>Employee ID</th>
+                    <th>Email</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
             {% for recipient in recipients %}
-                <li>
-                    <a href="{% url 'inbox:recipient_detail' recipient.id %}">{{recipient.employee_id}} | {{ recipient.name }} {{ recipient.last_name }}</a>
-                </li>
+                <tr class="bg-white border-b">
+                    <td class="px-6 py-4 text-gray-900 whitespace-nowrap">
+                        {{ recipient.name }}
+                    </td>
+                    <td>
+                        {{ recipient.last_name }}
+                    </td>
+                    <td scope="row">
+                        {{ recipient.employee_id }}
+                    </td>
+                    <td>
+                        {{ recipient.email }}
+                    </td>
+                    <td>
+                        <a href="{% url 'inbox:recipient_detail' recipient.id %}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+                    </td>
+                </tr>
             {% empty %}
-            <h3>No recipient registered</h3>
+                <h3>No recipient registered</h3>
             {% endfor %}
-            </ol>
-
-        </div>
+            </tbody>
+        </table>
     </div>
 {% endblock %}
