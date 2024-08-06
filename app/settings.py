@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "src.user",
     "src.inbox",
-    "src.home", 
+    "src.home",
 ]
 
 MIDDLEWARE = [

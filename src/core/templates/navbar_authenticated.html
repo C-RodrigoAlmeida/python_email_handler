@@ -10,10 +10,7 @@
 
     <div class="flex w-1/6 border-l-2 border-green-900 items-center justify-evenly">
         <a href="{% url 'user:profile' %}" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent hover:text-green-800">Profile</a>
-        <form action="{% url 'user:logout' %}" method="POST">
-            {% csrf_token %}
-            <input type="submit" value="Logout" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent hover:text-green-800">
-        </form>
+        <a href="{% url 'user:logout' %}" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent hover:text-green-800">Logout</a>
         <a data-collapse-toggle="navbar-sticky" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200" aria-controls="navbar-sticky" aria-expanded="false">
             <span class="sr-only">Open main menu</span>
         </a>
