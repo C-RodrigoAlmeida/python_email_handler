@@ -9,8 +9,10 @@
             <ol>
             {% for template in templates %}
                 <li>
-                    <a>{{ template.subject }}</a>
+                    <a href="">{{ template.subject }}</a>
                 </li>
+            {% empty %}
+                <h3>No message template registered</h3>
             {% endfor %}
             </ol>
 

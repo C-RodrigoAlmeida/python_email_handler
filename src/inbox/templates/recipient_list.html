@@ -11,6 +11,9 @@
                 <li>
                     <a>{{recipient.employee_id}} | {{ recipient.name }} {{ recipient.last_name }}</a>
                 </li>
+
+            {% empty %}
+            <h3>No recipient registered</h3>
             {% endfor %}
             </ol>
 
