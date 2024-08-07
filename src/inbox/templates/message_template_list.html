@@ -1,20 +1,65 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <div class="flex justify-center min-h-screen">
-        <div class="box-content m-5 rounded">
-            <h1 class="text-center font-bold text-black text-3xl mb-20">Message Template List:</h1>
+<div class="overflow-x-auto m-5 rounded-lg">
 
-            <ol>
-            {% for template in templates %}
-                <li>
-                    <a href="{% url 'inbox:message_template_detail' template.id %}">{{ template.subject }}</a>
-                </li>
-            {% empty %}
-                <h3>No message template registered</h3>
-            {% endfor %}
-            </ol>
+    <table class="w-full text-sm text-left rtl:text-right text-gray-500">
+        <thead class="text-xs font-bold text-gray-300 uppercase">
+            <tr class="bg-[#0b141a]">
+                <th scope="col" class="text-center font-bold text-white text-3xl mb-20 px-6 py-3 " colspan="3">
+                    Template List   
+                </th>
+            </tr>
+            <tr class="bg-[#202c33]">
+                <th class="px-6 py-3">Subject</th>
+                <th>Description</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
 
-        </div>
+        {% for template in templates %}
+            <tr class="bg-[#2a3942] border-b border-[#202b32] text-gray-300 hover:bg-[#8696a0]">
+                <td class="px-6 py-4 whitespace-nowrap">
+                    {{ template.subject }}
+                </td>
+                <td scope="row">
+                    {{ template.description }}
+                </td>
+                <td>
+                    <a href="{% url 'inbox:message_template_detail' template.id %}">
+                        <i class="fa-regular fa-pen-to-square"></i>
+                    </a>
+                    <a>
+                        <i class="fa-regular fa-trash-can"></i>
+                    </a>
+                </td>
+            </tr>
+        {% empty %}
+            <tr>
+                <td colspan="5" class="text-center py-4">No templates registered</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <!-- Pagination controls -->
+    <div class="pagination text-center text-gray-300 font-bold text-xl bg-[#202c33]">
+        <span class="step-links">
+            {% if templates.has_previous %}
+                <a href="?page=1">&laquo; first</a>
+                <a href="?page={{ templates.previous_page_number }}">previous</a>
+            {% endif %}
+            
+            <span class="current">
+                Page {{ templates.number }} of {{ templates.paginator.num_pages }}.
+            </span>
+            
+            {% if templates.has_next %}
+                <a href="?page={{ templates.next_page_number }}">next</a>
+                <a href="?page={{ templates.paginator.num_pages }}">last &raquo;</a>
+            {% endif %}
+        </span>
     </div>
+</div>
 {% endblock %}

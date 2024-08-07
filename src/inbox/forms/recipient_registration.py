@@ -15,7 +15,7 @@ class RecipientRegistrationForm(forms.ModelForm):
         super(RecipientRegistrationForm, self).__init__(*args, **kwargs)
         for field_name, field in self.fields.items():
             field.widget.attrs.update({
-                'class': 'form-control backdrop-blur bg-[#202c33] mb-8 border-b-2 border-gray-300 w-full',
+                'class': 'form-control backdrop-blur bg-[#202c33] mb-8 border-b-2 border-gray-300 w-full focus:outline-none focus:border-emerald-600',
             })
     
     def save(self, commit=True):

@@ -21,7 +21,7 @@
         <tbody>
 
         {% for recipient in recipients %}
-            <tr class="bg-[#2a3942] border-b border-[#202b32] text-gray-300">
+            <tr class="bg-[#2a3942] border-b border-[#202b32] text-gray-300 hover:bg-[#8696a0]">
                 <td class="px-6 py-4 whitespace-nowrap">
                     {{ recipient.name }}
                 </td>
@@ -35,7 +35,12 @@
                     {{ recipient.email }}
                 </td>
                 <td>
-                    <a href="{% url 'inbox:recipient_detail' recipient.id %}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+                    <a href="{% url 'inbox:recipient_detail' recipient.id %}">
+                        <i class="fa-regular fa-pen-to-square"></i>
+                    </a>
+                    <a>
+                        <i class="fa-regular fa-trash-can"></i>
+                    </a>
                 </td>
             </tr>
         {% empty %}
