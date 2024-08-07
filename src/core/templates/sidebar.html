@@ -1,6 +1,11 @@
-<div class="sticky w-1/6 h-screen z-0 border-r-2 border-slate-400 shadow-2xl">
+<div class="bg-[#202c33] w-1/6 h-screen z-0 shadow-2xl text-gray-300">
     <div class="h-full overflow-y-auto">
-        <ul class="ssdfont-medium">
+        <ul class="ssd font-medium">
+            <li>
+                <div class="justify-center w-full border-b-2 border-[#2a3942]">
+                    <a href="{%url 'user:panel' %}" class="text-6xl font-semibold ">EasyMail</a>
+                </div>
+            </li>
             <li>
                 <button type="button" class="flex items-center w-full p-2 transition duration-75 group hover:bg-gradient-to-r from-teal-700 to-amber-300" aria-controls="dropdown-example" data-collapse-toggle="dropdown-example">
                     <svg class="flex-shrink-0 w-5 h-5  transition duration-75 group-hover:text-green-700 dark:text-gray-400 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 21">
@@ -13,10 +18,10 @@
               </button>
               <ul id="dropdown-example" class="py-2">
                     <li>
-                       <a href="{% url 'inbox:message_template_creation' %}" class="flex items-center w-full p-2 transition duration-75 pl-11 group hover:bg-green-100">Create a new template</a>
+                       <a href="{% url 'inbox:message_template_creation' %}" class="flex items-center w-full p-2 transition duration-75 pl-11 group hover:bg-[#8696a0]">Create a new template</a>
                     </li>
                     <li>
-                       <a href="{% url 'inbox:message_template_list' %}" class="flex items-center w-full p-2 transition duration-75 pl-11 group hover:bg-green-100">View template list</a>
+                       <a href="{% url 'inbox:message_template_list' %}" class="flex items-center w-full p-2 transition duration-75 pl-11 group hover:bg-[#8696a0]">View template list</a>
                     </li>
               </ul>
             </li>
@@ -32,10 +37,10 @@
                 </button>
                 <ul id="dropdown-example" class="py-2">
                     <li>
-                       <a href="{% url 'inbox:message_template_creation' %}" class="flex items-center w-full p-2 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100">Send email</a>
+                       <a href="{% url 'inbox:message_template_creation' %}" class="flex items-center w-full p-2 transition duration-75 pl-11 group hover:bg-[#8696a0]">Send email</a>
                     </li>
                     <li>
-                       <a href="{% url 'inbox:message_template_list' %}" class="flex items-center w-full p-2 transition duration-75 rounded-lg pl-11 group hover:bg-green-100">View sent emails</a>
+                       <a href="{% url 'inbox:message_template_list' %}" class="flex items-center w-full p-2 transition duration-75 pl-11 group hover:bg-[#8696a0]">View sent emails</a>
                     </li>
               </ul>
             </li>
@@ -51,10 +56,10 @@
                 </button>
                 <ul id="dropdown-example" class="py-2">
                     <li>
-                       <a href="{% url 'inbox:message_template_creation' %}" class="flex items-center w-full p-2 transition duration-75 rounded-lg pl-11 group hover:bg-green-100">Create group</a>
+                       <a href="{% url 'inbox:message_template_creation' %}" class="flex items-center w-full p-2 transition duration-75 pl-11 group hover:bg-[#8696a0]">Create group</a>
                     </li>
                     <li>
-                       <a href="{% url 'inbox:message_template_list' %}" class="flex items-center w-full p-2 transition duration-75 rounded-lg pl-11 group hover:bg-green-100">View group list</a>
+                       <a href="{% url 'inbox:message_template_list' %}" class="flex items-center w-full p-2 transition duration-75 pl-11 group hover:bg-[#8696a0]">View group list</a>
                     </li>
               </ul>
             </li>
@@ -70,12 +75,24 @@
                 </button>
                 <ul id="dropdown-example" class="py-2">
                     <li>
-                       <a href="{% url 'inbox:recipient_registration' %}" class="flex items-center w-full p-2 transition duration-75 rounded-lg pl-11 group hover:bg-green-100">Register new recipient</a>
+                       <a href="{% url 'inbox:recipient_registration' %}" class="flex items-center w-full p-2 transition duration-75 pl-11 group hover:bg-[#8696a0]">Register new recipient</a>
                     </li>
                     <li>
-                       <a href="{% url 'inbox:recipient_list' %}" class="flex items-center w-full p-2 transition duration-75 rounded-lg pl-11 group hover:bg-green-100">View recipients list</a>
+                       <a href="{% url 'inbox:recipient_list' %}" class="flex items-center w-full p-2 transition duration-75 pl-11 group hover:bg-[#8696a0]">View recipients list</a>
                     </li>
               </ul>
+            </li>
+            <li>
+                <div class="flex border-t-2 border-[#2a3942] items-center justify-evenly">
+                    <a href="{% url 'user:profile' %}" class="block py-2 px-3 hover:bg-[#8696a0] md:hover:bg-transparent hover:text-blue-200">Profile</a>
+                    <form action="{% url 'user:logout' %}" method="POST">
+                        {% csrf_token %}
+                        <input type="submit" value="Logout" class="block py-2 px-3 hover:bg-[#8696a0] md:hover:bg-transparent hover:text-blue-200">
+                    </form>
+                    <a data-collapse-toggle="navbar-sticky" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-[#8696a0] focus:outline-none focus:ring-2 focus:ring-gray-200" aria-controls="navbar-sticky" aria-expanded="false">
+                        <span class="sr-only">Open main menu</span>
+                    </a>
+                </div>
             </li>
         </ul>
     </div>

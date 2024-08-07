@@ -1,12 +1,16 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="relative overflow-x-auto m-5 rounded-lg">
-    <h1 class="text-center font-bold text-black text-3xl mb-20">Recipients List:</h1>
+<div class="overflow-x-auto m-5 rounded-lg">
 
     <table class="w-full text-sm text-left rtl:text-right text-gray-500">
-        <thead class="text-xs font-bold text-gray-700 uppercase bg-slate-300">
-            <tr>
+        <thead class="text-xs font-bold text-gray-300 uppercase">
+            <tr class="bg-[#0c1317]">
+                <th scope="col" class="text-center font-bold text-white text-3xl mb-20 px-6 py-3 " colspan="5">
+                    Recipients List
+                </th>
+            </tr>
+            <tr class="bg-[#202c33]">
                 <th class="px-6 py-3">Name</th>
                 <th>Last Name</th>
                 <th>Employee ID</th>
@@ -17,8 +21,8 @@
         <tbody>
 
         {% for recipient in recipients %}
-            <tr class="bg-white border-b">
-                <td class="px-6 py-4 text-gray-900 whitespace-nowrap">
+            <tr class="bg-[#2a3942] border-b border-[#202b32] text-gray-300">
+                <td class="px-6 py-4 whitespace-nowrap">
                     {{ recipient.name }}
                 </td>
                 <td>
@@ -43,7 +47,7 @@
     </table>
 
     <!-- Pagination controls -->
-    <div class="pagination text-center mt-4">
+    <div class="pagination text-center text-gray-300 font-bold text-xl bg-[#202c33]">
         <span class="step-links">
             {% if recipients.has_previous %}
                 <a href="?page=1">&laquo; first</a>

@@ -10,14 +10,13 @@
 
     <body class="w-full text-black">
         {% if user.is_authenticated %}
-        {% include 'navbar_authenticated.html' %}
-        <div class="flex w-full mt-20">
+        <div class="flex w-full">
             {% include 'sidebar.html' %}
-            <div class="w-5/6 bg-teal-700">
+            <div class="w-5/6 bg-[#111b21]">
 
         {% else %}
-        {% include 'navbar_not_authenticated.html' %}
-        <div class='mt-20 bg-teal-700 min-h-screen min-w-screen'>
+        {% include 'navbar.html' %}
+        <div class='bg-[#111b21] min-h-screen min-w-screen'>
             <div>
         {% endif %}
 

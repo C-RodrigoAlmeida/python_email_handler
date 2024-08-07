@@ -2,21 +2,21 @@
 
 {% block content %}
 <div class="flex items-center justify-center min-h-screen">
-    <div class="p-10 m-5 border-2 bg-slate-300 border-slate-400 rounded-lg shadow">
+    <div class="p-10 m-5 bg-[#202c33] rounded-lg shadow text-gray-300">
         <h1 class="text-center text-3xl mb-10">Login</h1>
         <form action="" method="post">
             {% csrf_token %}
             <div class="grid grid-cols-2 gap-4 mb-4">
                 <div>
-                    <label for="{{ form.username.id_for_label }}" class="block text-sm font-medium text-gray-700">Employee ID:</label>
+                    <label for="{{ form.username.id_for_label }}" class="block text-sm font-medium ">Employee ID:</label>
                     {{ form.username }}
                 </div>
                 <div>
-                    <label for="{{ form.password.id_for_label }}" class="block text-sm font-medium text-gray-700">Password:</label>
+                    <label for="{{ form.password.id_for_label }}" class="block text-sm font-medium">Password:</label>
                     {{ form.password }}
                 </div>
             </div>
-            <input type="submit" value="Login" class="btn btn-primary btn-block mt-3 p-2 bg-green-500 hover:bg-green-600 rounded">
+            <input type="submit" value="Login" class="w-full bg-[#8696a0] hover:bg-emerald-600 text-white p-2 rounded mt-3 cursor-pointer">
         </form>
     </div>
 </div>

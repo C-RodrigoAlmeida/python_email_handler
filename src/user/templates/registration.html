@@ -2,37 +2,37 @@
 
 {% block content %}
 <div class="flex items-center justify-center min-h-screen">
-    <div class="p-10 m-5 border-2 bg-slate-300 border-slate-400 rounded-lg shadow">
+    <div class="p-10 m-5 bg-[#202c33] rounded-lg shadow text-gray-300">
         <h1 class="text-center text-3xl mb-10">Registration</h1>
         <form action="" method="post">
             {% csrf_token %}
             <div class="grid grid-cols-2 gap-4 mb-4">
                 <div>
-                    <label for="{{ form.first_name.id_for_label }}" class="block text-sm font-medium text-gray-700">First Name:</label>
+                    <label for="{{ form.first_name.id_for_label }}" class="block text-sm font-medium">First Name:</label>
                     {{ form.first_name }}
                 </div>
                 <div>
-                    <label for="{{ form.last_name.id_for_label }}" class="block text-sm font-medium text-gray-700">Last Name:</label>
+                    <label for="{{ form.last_name.id_for_label }}" class="block text-sm font-medium">Last Name:</label>
                     {{ form.last_name }}
                 </div>
             </div>
 
             <div class="mb-4">
-                <label for="{{ form.email.id_for_label }}" class="block text-sm font-medium text-gray-700">Email:</label>
+                <label for="{{ form.email.id_for_label }}" class="block text-sm font-medium">Email:</label>
                 {{ form.email }}
             </div>
             
             <div class="grid grid-cols-2 gap-4 mb-4">
                 <div>
-                    <label for="{{ form.employee_id.id_for_label }}" class="block text-sm font-medium text-gray-700">Employee ID:</label>
+                    <label for="{{ form.employee_id.id_for_label }}" class="block text-sm font-medium">Employee ID:</label>
                     {{ form.employee_id }}
                 </div>
                 <div>
-                    <label for="{{ form.password.id_for_label }}" class="block text-sm font-medium text-gray-700">Password:</label>
+                    <label for="{{ form.password.id_for_label }}" class="block text-sm font-medium">Password:</label>
                     {{ form.password }}
                 </div>
             </div>
-            <input type="submit" value="Register" class="w-full bg-green-500 hover:bg-green-600 text-white p-2 rounded mt-3 cursor-pointer">
+            <input type="submit" value="Register" class="w-full bg-[#8696a0] hover:bg-emerald-600 text-white p-2 rounded mt-3 cursor-pointer">
         </form>
     </div>
 </div>
