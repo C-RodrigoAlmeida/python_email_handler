@@ -6,7 +6,7 @@
         <h1 class="text-center text-3xl mb-10">Login</h1>
         <form action="" method="post">
             {% csrf_token %}
-            <div class="grid grid-cols-2 gap-4 mb-4">
+            <div>
                 <div>
                     <label for="{{ form.username.id_for_label }}" class="block text-sm font-medium ">Employee ID:</label>
                     {{ form.username }}
