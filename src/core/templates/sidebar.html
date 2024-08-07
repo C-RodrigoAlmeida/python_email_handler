@@ -80,20 +80,19 @@
                     <li>
                        <a href="{% url 'inbox:recipient_list' %}" class="flex items-center w-full p-2 transition duration-75 pl-11 group hover:bg-teal-800">View recipients list</a>
                     </li>
-              </ul>
+                </ul>
             </li>
-            <li>
-                <div class="flex border-t-2 border-[#2a3942] items-center justify-evenly">
-                    <a href="{% url 'user:profile' %}" class="block py-2 px-3 hover:bg-[#8696a0] md:hover:bg-transparent hover:text-blue-200">Profile</a>
+            <ul class="flex">
+                <li>
+                    <a href="{% url 'user:profile' %}" class="flex items-center w-full p-2 transition duration-75 group hover:bg-teal-800">Profile</a>
+                </li>    
+                <li>
                     <form action="{% url 'user:logout' %}" method="POST">
                         {% csrf_token %}
-                        <input type="submit" value="Logout" class="block py-2 px-3 hover:bg-[#8696a0] md:hover:bg-transparent hover:text-blue-200">
+                        <input type="submit" value="Logout" class="flex items-center w-full p-2 transition duration-75 group hover:bg-teal-800">
                     </form>
-                    <a data-collapse-toggle="navbar-sticky" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-[#8696a0] focus:outline-none focus:ring-2 focus:ring-gray-200" aria-controls="navbar-sticky" aria-expanded="false">
-                        <span class="sr-only">Open main menu</span>
-                    </a>
-                </div>
-            </li>
+                </li>
+            </ul>
         </ul>
     </div>
 </div>
