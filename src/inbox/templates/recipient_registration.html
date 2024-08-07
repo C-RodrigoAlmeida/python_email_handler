@@ -2,11 +2,35 @@
 
 {% block content %}
 <div class="flex flex-col justify-center">
-<h1 class="text-center font-bold text-black text-3xl mb-20">Recipient Registration</h1>
-<form action="" method="post" class="self-center">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="Save" class="btn btn-primary btn-block mt-3 p-2 bg-green-500 hover:bg-green-600 rounded">
-</form>
+<div class="flex items-center justify-center min-h-screen">
+    <div class="p-10 bg-[#202c33] rounded-lg shadow text-gray-300">
+        <h1 class="text-center text-3xl mb-10">Recipient Registration</h1>
+        <form action="" method="post">
+            {% csrf_token %}
+            <div class="grid grid-cols-2 gap-4 mb-4">
+                <div>
+                    <label for="{{ form.name.id_for_label }}" class="block text-sm font-medium">First Name:</label>
+                    {{ form.name }}
+                </div>
+                <div>
+                    <label for="{{ form.last_name.id_for_label }}" class="block text-sm font-medium">Last Name:</label>
+                    {{ form.last_name }}
+                </div>
+            </div>
+           
+            <div class="grid grid-cols-2 gap-4 mb-4">
+                <div>
+                    <label for="{{ form.employee_id.id_for_label }}" class="block text-sm font-medium">Employee ID:</label>
+                    {{ form.employee_id }}
+                </div>
+                <div>
+                    <label for="{{ form.email.id_for_label }}" class="block text-sm font-medium">Email:</label>
+                    {{ form.email }}
+                </div>
+            </div>
+            <input type="submit" value="Register" class="w-full bg-[#8696a0] hover:bg-emerald-600 text-white p-2 rounded mt-3 cursor-pointer">
+        </form>
+    </div>
+</div>
 <div>
 {% endblock %}
