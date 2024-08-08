@@ -35,10 +35,10 @@
                     {{ recipient.email }}
                 </td>
                 <td>
-                    <a class="mr-2" href="{% url 'inbox:recipient_update' recipient.id %}">
+                    <a href="{% url 'inbox:recipient_update' recipient.id %}" class="mr-2">
                         <i class="fa-regular fa-pen-to-square"></i>
                     </a>
-                    <a href="{% url 'inbox:recipient_delete' recipient.id %}">
+                    <a href="{% url 'inbox:recipient_delete' recipient.id %}" class="ml-2">
                         <i class="fa-regular fa-trash-can"></i>
                     </a>
                 </td>
