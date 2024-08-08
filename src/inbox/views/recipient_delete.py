@@ -5,7 +5,7 @@ from src.inbox.models.recipient import Recipient
 
 class RecipientDeleteView(LoginRequiredMixin, DeleteView):
     model = Recipient
-    template_name='recipient_confirm_delete.html'
+    template_name='object_confirm_delete.html'
     success_url = reverse_lazy('inbox:recipient_list')
 
     def delete(self, request, *args, **kwargs):

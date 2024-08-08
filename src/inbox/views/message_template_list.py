@@ -1,5 +1,6 @@
 from src.inbox.models.message_template import MessageTemplate
 from src.user.models.custom_user import CustomUser
+from django.db.models import Q
 from django.shortcuts import get_object_or_404
 from django.views.generic import ListView
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -19,7 +20,7 @@ class MessageTemplatesListView(ListView, LoginRequiredMixin):
             raise PermissionDenied
 
         self.custom_user = get_object_or_404(CustomUser, id=self.request.user.id)
-        return MessageTemplate.objects.filter(message_owner=self.custom_user).order_by('id')
+        return MessageTemplate.objects.filter(Q(message_owner=self.custom_user) & Q(deleted_at__isnull=True) ).order_by('id')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)

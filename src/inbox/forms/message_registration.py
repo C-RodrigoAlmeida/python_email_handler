@@ -6,7 +6,7 @@ class MessageTemplateForm(MessageBaseForm):
     class Meta(MessageBaseForm.Meta):
         pass
 
-    def save(self, commit=True):
+    def save(self, commit=True) -> MessageTemplate:
         instance = super().save(commit=False)
         instance.message_owner = self.user
         if commit:
