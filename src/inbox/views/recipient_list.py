@@ -7,6 +7,7 @@ from django.core.exceptions import PermissionDenied
 from django.core.paginator import Paginator
 from django.core.paginator import EmptyPage
 from django.core.paginator import PageNotAnInteger
+from django.db.models import Q
 
 class RecipientListView(LoginRequiredMixin, ListView):
     model = Recipient
@@ -19,7 +20,7 @@ class RecipientListView(LoginRequiredMixin, ListView):
             raise PermissionDenied
         
         self.custom_user = get_object_or_404(CustomUser, id=self.request.user.id)
-        return Recipient.objects.filter(contact_owner=self.custom_user).order_by('id')
+        return Recipient.objects.filter(Q(contact_owner=self.custom_user)  & Q(deleted_at__isnull=True)).order_by('id')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)

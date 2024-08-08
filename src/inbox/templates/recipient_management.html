@@ -4,7 +4,7 @@
 <div class="flex flex-col justify-center w-full">
 <div class="flex items-center justify-center min-h-screen">
     <div class="p-10 bg-[#202c33] rounded-lg shadow text-gray-300">
-        <h1 class="text-center text-3xl mb-10">Recipient Registration</h1>
+        <h1 class="text-center text-3xl mb-10">{{ operation_name }}</h1>
         <form action="" method="post">
             {% csrf_token %}
             <div class="grid grid-cols-2 gap-4 mb-4">
@@ -28,7 +28,7 @@
                     {{ form.email }}
                 </div>
             </div>
-            <input type="submit" value="Register" class="w-full bg-[#8696a0] hover:bg-teal-800 text-white p-2 rounded mt-3 cursor-pointer">
+            <input type="submit" value="{{ button_value }}" class="w-full bg-[#8696a0] hover:bg-teal-800 text-white p-2 rounded mt-3 cursor-pointer">
         </form>
     </div>
 </div>

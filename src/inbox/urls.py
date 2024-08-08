@@ -2,9 +2,10 @@ from django.urls import path
 from src.inbox.views.message_template_creation import MessageTemplateCreateView
 from src.inbox.views.message_template_list import MessageTemplatesListView
 from src.inbox.views.message_template_detail import MessageTemplateDetailView
+from src.inbox.views.recipient_delete import RecipientDeleteView
 from src.inbox.views.recipient_registration import RecipientCreateView
 from src.inbox.views.recipient_list import RecipientListView
-from src.inbox.views.recipient_detail import RecipientDetailView
+from src.inbox.views.recipient_update import RecipientUpdateView
 
 app_name = "inbox"
 
@@ -17,5 +18,6 @@ urlpatterns = [
     # Recipient URLs
     path('recipient/registration/', RecipientCreateView.as_view(), name='recipient_registration'),
     path('recipient/list/', RecipientListView.as_view(), name='recipient_list'),
-    path('recipient/<int:pk>/', RecipientDetailView.as_view(), name='recipient_detail'),
+    path('recipient/update/<int:pk>/', RecipientUpdateView.as_view(), name='recipient_update'),
+    path('recipient/delete/<int:pk>/', RecipientDeleteView.as_view(), name='recipient_delete'),
 ]
