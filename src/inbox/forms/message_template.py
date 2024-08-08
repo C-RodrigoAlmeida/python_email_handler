@@ -17,7 +17,7 @@ class MessageTemplateForm(forms.ModelForm):
                 })
             else:
                 field.widget.attrs.update({
-                    'class': 'form-control backdrop-blur bg-[#202c33] mb-8 border-2 border-gray-300 w-full focus:outline-none focus:border-teal-800',
+                    'class': 'form-control backdrop-blur bg-[#202c33] mb-8 border-2 border-gray-300 w-full h-96 focus:outline-none focus:border-teal-800',
                 })
     
     def save(self, commit=True):
