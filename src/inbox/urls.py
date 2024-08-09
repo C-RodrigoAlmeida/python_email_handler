@@ -12,6 +12,9 @@ from src.inbox.views.recipient_registration import RecipientCreateView
 from src.inbox.views.recipient_list import RecipientListView
 from src.inbox.views.recipient_update import RecipientUpdateView
 
+# Group Imports
+from src.inbox.views.group_registration import GroupRegistrationView
+
 app_name = "inbox"
 
 urlpatterns = [
@@ -26,4 +29,7 @@ urlpatterns = [
     path('recipient/list/', RecipientListView.as_view(), name='recipient_list'),
     path('recipient/update/<int:pk>/', RecipientUpdateView.as_view(), name='recipient_update'),
     path('recipient/delete/<int:pk>/', RecipientDeleteView.as_view(), name='recipient_delete'),
+
+    # Group URLs
+    path('group/registration/', GroupRegistrationView.as_view(), name='group_registration'),
 ]

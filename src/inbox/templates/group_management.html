@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="flex items-center justify-center min-h-full">
+    <div class="basis-1/2 p-10 m-5 bg-[#202c33] rounded-lg shadow text-gray-300">
+        <h1 class="text-center text-3xl mb-10">{{ template_topic }}</h1>
+        <form action="" method="post">
+            {% csrf_token %}
+
+            <div class="mb-4">
+                <label for="{{ form.subject.id_for_label }}" class="block text-sm font-medium uppercase">Name:</label>
+                {{ form.name }}
+            </div>
+
+            <div class="mb-4">
+                <label for="{{ form.description.id_for_label }}" class="block text-sm font-medium uppercase">Description:</label>
+                {{ form.description }}
+            </div>
+            
+            <div class="mb-4">
+                <label for="{{ form.content.id_for_label }}" class="block text-sm font-medium uppercase">Recipients:</label>
+                {{ form.recipients }}
+            </div>
+            <input type="submit" value="{{ template_button }}" class="w-full bg-[#8696a0] hover:bg-teal-800 text-white p-2 rounded mt-3 cursor-pointer">
+        </form>
+    </div>
+</div>
+{% endblock %}
