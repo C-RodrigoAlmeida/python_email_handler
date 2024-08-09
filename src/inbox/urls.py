@@ -7,13 +7,14 @@ from src.inbox.views.message_template_update import MessageTemplateUpdateView
 from src.inbox.views.message_template_delete import MessageTemplateDeleteView
 
 # Recipient Imports
-from src.inbox.views.recipient_delete import RecipientDeleteView
 from src.inbox.views.recipient_registration import RecipientCreateView
 from src.inbox.views.recipient_list import RecipientListView
 from src.inbox.views.recipient_update import RecipientUpdateView
+from src.inbox.views.recipient_delete import RecipientDeleteView
 
 # Group Imports
 from src.inbox.views.group_registration import GroupRegistrationView
+from src.inbox.views.group_list import GroupListView
 
 app_name = "inbox"
 
@@ -32,4 +33,5 @@ urlpatterns = [
 
     # Group URLs
     path('group/registration/', GroupRegistrationView.as_view(), name='group_registration'),
+    path('group/list/', GroupListView.as_view(), name='group_list')
 ]
