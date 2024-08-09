@@ -23,9 +23,12 @@ class GroupUpdateForm(GroupBaseForm):
             ).order_by('id')
 
         if self.instance and self.instance.pk:
-            self.fields['recipients'].queryset = self.instance.recipients.all()
-            self.fields['recipients'].required = False
-            self.fields['recipients'].initial = []
+            self.fields['recipients'] = forms.MultipleChoiceField(
+                choices=((_choice.id, str(_choice)) for _choice in self.instance.recipients.all()),
+                required=False,
+                label="Recipients in Group",
+                widget=forms.CheckboxSelectMultiple
+            )
 
             self.fields['not_included_recipients'].queryset = all_recipients.exclude(id__in=self.instance.recipients.all())
 
