@@ -10,7 +10,4 @@ class MessageTemplateDeleteView(DeleteView):
     def delete(self, request, *args, **kwargs):
         self.object = self.get_object()
         self.object.delete(soft=True)
-        return self.get_success_url()
-    
-    def get_success_url(self):
         return self.success_url

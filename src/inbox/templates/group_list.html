@@ -27,10 +27,10 @@
                     {{ group.description }}
                 </td>
                 <td>
-                    <a href="" class="mr-2">
+                    <a href="{% url 'inbox:group_update' group.id %}" class="mr-2">
                         <i class="fa-regular fa-pen-to-square"></i>
                     </a>
-                    <a href="" class="ml-2">
+                    <a href="{% url 'inbox:group_delete' group.id %}" class="ml-2">
                         <i class="fa-regular fa-trash-can"></i>
                     </a>
                 </td>
