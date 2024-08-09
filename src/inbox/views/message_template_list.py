@@ -29,10 +29,10 @@ class MessageTemplatesListView(ListView, LoginRequiredMixin):
         page = self.request.GET.get('page')
 
         try:
-            context['templates'] = paginator.page(page)
+            context['pagination'] = paginator.page(page)
         except PageNotAnInteger:
-            context['templates'] = paginator.page(1)
+            context['pagination'] = paginator.page(1)
         except EmptyPage:
-            context['templates'] = paginator.page(paginator.num_pages)
+            context['pagination'] = paginator.page(paginator.num_pages)
 
         return context

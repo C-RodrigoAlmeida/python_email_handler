@@ -29,10 +29,10 @@ class RecipientListView(LoginRequiredMixin, ListView):
         page = self.request.GET.get('page')
 
         try:
-            context['recipients'] = paginator.page(page)
+            context['pagination'] = paginator.page(page)
         except PageNotAnInteger:
-            context['recipients'] = paginator.page(1)
+            context['pagination'] = paginator.page(1)
         except EmptyPage:
-            context['recipients'] = paginator.page(paginator.num_pages)
+            context['pagination'] = paginator.page(paginator.num_pages)
 
         return context

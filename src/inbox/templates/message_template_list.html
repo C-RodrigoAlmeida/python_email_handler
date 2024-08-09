@@ -43,23 +43,6 @@
         </tbody>
     </table>
 
-    <!-- Pagination controls -->
-    <div class="pagination text-center text-gray-300 font-bold text-xl bg-[#202c33]">
-        <span class="step-links">
-            {% if templates.has_previous %}
-                <a href="?page=1">&laquo; first</a>
-                <a href="?page={{ templates.previous_page_number }}">previous</a>
-            {% endif %}
-            
-            <span class="current">
-                Page {{ templates.number }} of {{ templates.paginator.num_pages }}.
-            </span>
-            
-            {% if templates.has_next %}
-                <a href="?page={{ templates.next_page_number }}">next</a>
-                <a href="?page={{ templates.paginator.num_pages }}">last &raquo;</a>
-            {% endif %}
-        </span>
-    </div>
+    {% include 'pagination_controls.html' %}
 </div>
 {% endblock %}

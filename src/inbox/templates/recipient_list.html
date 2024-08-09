@@ -51,49 +51,6 @@
         </tbody>
     </table>
 
-    <div id="popup-modal" tabindex="-1" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
-        <div class="relative p-4 w-full max-w-md max-h-full">
-            <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
-                <div class="p-4 md:p-5 text-center">
-                    <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">Are you sure you want to delete "{{ object }}"?</h3>
-                    <form method="post">{% csrf_token %}
-                        {{ form }}
-                        <input type="submit" value="Confirm">
-                    </form>
-                    <button data-modal-hide="popup-modal" type="submit" class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center">
-                        Yes, I'm sure
-                    </button>
-                    <button data-modal-hide="popup-modal" type="button" class="py-2.5 px-5 ms-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">No, cancel</button>
-                </div>
-            </div>
-        </div>
-    </div> 
-
-    <!-- Pagination controls -->
-    <div class="pagination flex flex-col items-center text-gray-300 font-medium bg-[#202c33]">
-        <span class="step-links">
-            <span class="current text-gray-700 dark:text-gray-400">
-                Page <span class="font-semibold text-gray-900 dark:text-white">{{ recipients.number }}</span>
-                of <span class="font-semibold text-gray-900 dark:text-white">{{ recipients.paginator.num_pages }}</span>.
-            </span>
-            <div class="inline-flex m-2">
-                {% if recipients.has_previous %}
-                    <a class="flex items-center justify-center px-3 h-8 font-medium text-white bg-[#202c33] rounded hover:bg-teal-800" href="?page=1">&laquo; First</a>
-                    <a class="flex items-center justify-center px-3 h-8 font-medium text-white bg-[#202c33] rounded hover:bg-teal-800" href="?page={{ recipients.previous_page_number }}">Prev</a>
-                {% endif %}
-                
-                {% if recipients.has_next %}
-                    <a class="flex items-center justify-center px-3 h-8 font-medium text-white bg-[#202c33] rounded hover:bg-teal-800" href="?page={{ recipients.next_page_number }}">Next</a>
-                    <a class="flex items-center justify-center px-3 h-8 font-medium text-white bg-[#202c33] rounded hover:bg-teal-800" href="?page={{ recipients.paginator.num_pages }}">Last &raquo;</a>
-                {% endif %}
-            </div>
-        </span>
-    </div>
+    {% include 'pagination_controls.html' %}
 </div>
-
-
-
-
-
-
 {% endblock %}
