@@ -22,4 +22,4 @@ class GroupUpdateView(LoginRequiredMixin, UpdateView):
         return context
 
     def get_queryset(self):
-        return Group.objects.filter(group_owner=self.request.user)
+        return Group.objects.prefetch_related('recipients').filter(group_owner=self.request.user)
