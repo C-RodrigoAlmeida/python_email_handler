@@ -17,7 +17,14 @@ class GroupRegistrationForm(GroupBaseForm):
 
     def save(self, commit=True) -> Group:
         instance = super().save(commit=False)
-        instance.group_owner = self.user
+        instance.group_owner = self.user        
+        
+        recipients = self.cleaned_data.get('recipients')
+        if recipients:
+            instance.save() 
+            instance.recipients.add(*recipients)
+
         if commit:
             instance.save()
+        
         return instance

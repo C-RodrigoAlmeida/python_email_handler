@@ -17,9 +17,32 @@
                 {{ form.description }}
             </div>
             
-            <div class="mb-4">
-                <label for="{{ form.content.id_for_label }}" class="block text-sm font-medium uppercase">Recipients:</label>
-                {{ form.recipients }}
+            {% if form.not_included_recipients %}
+                <div class="mb-2">
+                    <label for="" class="block text-center text-sm font-medium uppercase">Recipients:</label>
+                </div>
+            {% endif %}
+            <div class="mb-4 {% if form.not_included_recipients %}grid grid-cols-2 gap-4{% endif %}">
+                {% if form.not_included_recipients %}
+                <div>
+                    <label for="{{ form.not_included_recipients.id_for_label }}" class="block text-sm font-medium uppercase">Not in Group: (Select to add)</label>
+                    <div class="form-control-container backdrop-blur bg-[#202c33] border-2 border-gray-300 w-full h-96 focus:border-teal-800 p-2">
+                        {{ form.not_included_recipients }}
+                    </div>
+                </div>
+                {% endif %}
+                <div>
+                    <label for="{{ form.content.id_for_label }}" class="block text-sm font-medium uppercase">
+                        {% if form.not_included_recipients %}
+                            in Group:  (Select to remove)
+                        {% else %}
+                            Recipients: (Select to add)
+                        {% endif %}
+                    </label>
+                    <div class="form-control-container backdrop-blur bg-[#202c33] border-2 border-gray-300 w-full h-96 focus:border-teal-800 p-2">
+                        {{ form.recipients }}
+                    </div>
+                </div>
             </div>
             <input type="submit" value="{{ template_button }}" class="w-full bg-[#8696a0] hover:bg-teal-800 text-white p-2 rounded mt-3 cursor-pointer">
         </form>

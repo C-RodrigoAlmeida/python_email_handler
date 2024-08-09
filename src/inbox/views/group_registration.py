@@ -11,7 +11,7 @@ class GroupRegistrationView(CreateView, LoginRequiredMixin):
     model = Group
     form_class = GroupRegistrationForm
     template_name = 'group_management.html'
-    success_url = reverse_lazy('group_list')
+    success_url = reverse_lazy('inbox:group_list')
 
     def get_queryset(self) -> None:
         if not self.request.user.is_authenticated:

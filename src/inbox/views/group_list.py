@@ -5,7 +5,6 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.db.models import Q
 from django.contrib.auth.mixins import LoginRequiredMixin
 from src.inbox.models.group import Group
-from src.inbox.models.recipient import Recipient
 from src.user.models.custom_user import CustomUser
 
 class GroupListView(ListView, LoginRequiredMixin):
