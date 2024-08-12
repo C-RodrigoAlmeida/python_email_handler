@@ -26,7 +26,7 @@
                 {% if form.not_included_recipients %}
                 <div>
                     <label for="{{ form.not_included_recipients.id_for_label }}" class="block text-sm font-medium uppercase">Not in Group: (Select to add)</label>
-                    <div class="form-control-container backdrop-blur bg-[#202c33] border-2 border-gray-300 w-full h-96 focus:border-teal-800 p-2">
+                    <div class="form-control-container backdrop-blur bg-[#202c33] border-2 border-gray-300 w-full h-96 focus:border-teal-800 p-2 overflow-auto">
                         {{ form.not_included_recipients }}
                     </div>
                 </div>
@@ -39,7 +39,7 @@
                             Recipients: (Select to add)
                         {% endif %}
                     </label>
-                    <div class="form-control-container backdrop-blur bg-[#202c33] border-2 border-gray-300 w-full h-96 focus:border-teal-800 p-2">
+                    <div class="form-control-container backdrop-blur bg-[#202c33] border-2 border-gray-300 w-full h-96 focus:border-teal-800 p-2 overflow-auto">
                         {{ form.recipients }}
                     </div>
                 </div>
