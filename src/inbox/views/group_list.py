@@ -18,13 +18,27 @@ class GroupListView(ListView, LoginRequiredMixin):
             raise PermissionDenied
         
         self.custom_user = get_object_or_404(CustomUser, id=self.request.user.id)
-        return Group.objects.filter(Q(group_owner=self.custom_user)  & Q(deleted_at__isnull=True)).order_by('id')
+        search = self.request.GET.get('search', '')
+        if search:
+            return Group.objects.filter(
+                Q(group_owner=self.request.user) 
+                & Q(deleted_at__isnull=True) 
+                & (Q(name__icontains=search) 
+                   | Q(description__icontains=search))
+            ).order_by('name')
+        
+        else:
+            return Group.objects.filter(Q(group_owner=self.custom_user)  & Q(deleted_at__isnull=True)).order_by('name')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['custom_user'] = self.custom_user
         paginator = Paginator(self.object_list, self.paginate_by)
         page = self.request.GET.get('page')
+
+        search = self.request.GET.get('search', '')
+        if search:
+            context['search'] = search
 
         try:
             context['pagination'] = paginator.page(page)
