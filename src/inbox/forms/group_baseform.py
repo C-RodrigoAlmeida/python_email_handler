@@ -19,5 +19,5 @@ class GroupBaseForm(forms.ModelForm):
                 })
             else:
                 field.widget.attrs.update({
-                    'class': 'form-control-container',
+                    'class': 'form-control',
                 })
