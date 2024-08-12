@@ -18,9 +18,18 @@ class MessageTemplatesListView(ListView, LoginRequiredMixin):
     def get_queryset(self):
         if not self.request.user.is_authenticated:
             raise PermissionDenied
-
+        
         self.custom_user = get_object_or_404(CustomUser, id=self.request.user.id)
-        return MessageTemplate.objects.filter(Q(message_owner=self.custom_user) & Q(deleted_at__isnull=True) ).order_by('id')
+        search = self.request.GET.get('search', '')
+        if search:
+            return MessageTemplate.objects.filter(
+                Q(message_owner=self.request.user) 
+                & Q(deleted_at__isnull=True) 
+                & (Q(subject__icontains=search) 
+                   | Q(description__icontains=search))
+            ).order_by('subject')
+
+        return MessageTemplate.objects.filter(Q(message_owner=self.custom_user) & Q(deleted_at__isnull=True) ).order_by('subject')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -28,6 +37,10 @@ class MessageTemplatesListView(ListView, LoginRequiredMixin):
         paginator = Paginator(self.object_list, self.paginate_by)
         page = self.request.GET.get('page')
 
+        search = self.request.GET.get('search', '')
+        if search:
+            context['search'] = search
+            
         try:
             context['pagination'] = paginator.page(page)
         except PageNotAnInteger:
