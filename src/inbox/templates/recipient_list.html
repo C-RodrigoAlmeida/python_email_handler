@@ -2,14 +2,25 @@
 
 {% block content %}
 <div class="overflow-x-auto m-5 rounded-lg">
-
+    <div class="bg-[#0b141a] grid grid-cols-3 px-6 py-3 text-gray-300 font-bold">
+        <div>
+        </div>
+        <div class="text-center text-white text-3xl">
+            <p>Recipients List</p>
+        </div>
+        <form action="" method="GET" class="flex items-center px-10 gap-1">
+            <p>SEARCH:</p>
+            <input type="text" value="{{ search }}" name="search" class="w-full bg-inherit border-b-2 border-gray-300 focus:outline-none focus:border-teal-800 text-white p-2 cursor-pointer">
+            <button type="submit" class="bg-[#8696a0] hover:bg-teal-800 text-white p-2 rounded mt-3 cursor-pointer">
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </button>
+            <a href="{% url 'inbox:recipient_list' %}" class="bg-[#8696a0] hover:bg-teal-800 text-white p-2 rounded mt-3 cursor-pointer">
+                <i class="fa-solid fa-xmark"></i>
+            </a>
+        </form>
+    </div>
     <table class="w-full text-sm text-left rtl:text-right text-gray-500">
         <thead class="text-xs font-bold text-gray-300 uppercase">
-            <tr class="bg-[#0b141a]">
-                <th scope="col" class="text-center font-bold text-white text-3xl mb-20 px-6 py-3 " colspan="5">
-                    Recipients List
-                </th>
-            </tr>
             <tr class="bg-[#202c33]">
                 <th class="px-6 py-3">Name</th>
                 <th>Last Name</th>

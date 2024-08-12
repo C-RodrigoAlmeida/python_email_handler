@@ -2,8 +2,8 @@
     <span class="step-links flex items-center justify-center w-1/4">
         <div class="flex justify-end w-1/3">
             {% if pagination.has_previous %}
-                <a class="flex items-center justify-center px-1 h-8 font-medium text-white bg-[#202c33] rounded hover:bg-teal-800" href="?page=1">&laquo; First</a>
-                <a class="flex items-center justify-center px-1 h-8 font-medium text-white bg-[#202c33] rounded hover:bg-teal-800" href="?page={{ pagination.previous_page_number }}">Previous</a>
+                <a class="flex items-center justify-center px-1 h-8 font-medium text-white bg-[#202c33] rounded hover:bg-teal-800" href="?page=1{% if search %}&search={{ search }}{% endif %}">&laquo; First</a>
+                <a class="flex items-center justify-center px-1 h-8 font-medium text-white bg-[#202c33] rounded hover:bg-teal-800" href="?page={{ pagination.previous_page_number }}{% if search %}&search={{ search }}{% endif %}">Previous</a>
             {% endif %}
         </div>
         <div class="w-1/3 text-center">
@@ -14,8 +14,8 @@
         </div>
         <div class="flex justify-start w-1/3">
             {% if pagination.has_next %}
-                <a class="flex items-center justify-center px-1 h-8 font-medium text-white bg-[#202c33] rounded hover:bg-teal-800" href="?page={{ pagination.next_page_number }}">Next</a>
-                <a class="flex items-center justify-center px-1 h-8 font-medium text-white bg-[#202c33] rounded hover:bg-teal-800" href="?page={{ pagination.paginator.num_pages }}">Last &raquo;</a>
+                <a class="flex items-center justify-center px-1 h-8 font-medium text-white bg-[#202c33] rounded hover:bg-teal-800" href="?page={{ pagination.next_page_number }}{% if search %}&search={{ search }}{% endif %}">Next</a>
+                <a class="flex items-center justify-center px-1 h-8 font-medium text-white bg-[#202c33] rounded hover:bg-teal-800" href="?page={{ pagination.paginator.num_pages }}{% if search %}&search={{ search }}{% endif %}">Last &raquo;</a>
             {% endif %}
         </div>
     </span>
