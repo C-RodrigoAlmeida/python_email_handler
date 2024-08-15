@@ -18,6 +18,9 @@ from src.inbox.views.group_list import GroupListView
 from src.inbox.views.group_update import GroupUpdateView
 from src.inbox.views.group_delete import GroupDeleteView
 
+# Email Imports
+from src.inbox.views.email_send import EmailSend
+
 app_name = "inbox"
 
 urlpatterns = [
@@ -38,4 +41,7 @@ urlpatterns = [
     path('group/list/', GroupListView.as_view(), name='group_list'),
     path('group/update/<int:pk>/', GroupUpdateView.as_view(), name='group_update'),
     path('group/delete/<int:pk>/', GroupDeleteView.as_view(), name='group_delete'),
+
+    # Email URLs
+    path('email/send/', EmailSend.as_view(), name='email_send'),
 ]
