@@ -1,0 +1,16 @@
+{% extends base.html %}
+
+{% block content %}
+
+<h1>Send an E-mail</h1>
+
+<form action="" method="post">
+    {% csrf_token %}
+
+    <div class="mb-4">
+        <label for="{{ form.subject.id_for_label }}" class="block text-sm font-medium uppercase">Subject:</label>
+        {{ form.subject }}
+    </div>
+
+
+{% endblock %}
