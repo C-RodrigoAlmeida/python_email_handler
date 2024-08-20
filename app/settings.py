@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     "src.user",
     "src.inbox",
     "src.home",
+    "src.core",
 ]
 
 MIDDLEWARE = [
@@ -57,7 +58,7 @@ ROOT_URLCONF = "app.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [BASE_DIR / "src" / "core" / "templates"],
+        "DIRS": [BASE_DIR / "src/core/templates"],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [

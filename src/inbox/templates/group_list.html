@@ -1,4 +1,11 @@
 {% extends 'base.html' %}
+{% load table_tags %}
+
+{% block content %}
+    {% render_table headers rows title table_url controls search %}
+{% endblock %}
+
+{% comment %} {% extends 'base.html' %}
 
 {% block content %}
 <div class="m-5 rounded-lg">
@@ -57,4 +64,4 @@
 
     {% include 'pagination_controls.html' %}
 </div>
-{% endblock %}
+{% endblock %} {% endcomment %}
