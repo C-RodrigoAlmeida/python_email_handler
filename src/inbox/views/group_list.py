@@ -40,7 +40,7 @@ class GroupListView(ListView, LoginRequiredMixin):
         
         context['custom_user'] = self.request.user
         context['title'] = "Group List"
-        context['headers'] = ['Name', 'Description', 'Action']
+        context['headers'] = ['name', 'description', 'action']
         context['table_url'] = 'inbox:group_list'
 
         paginator = Paginator(queryset, self.paginate_by)

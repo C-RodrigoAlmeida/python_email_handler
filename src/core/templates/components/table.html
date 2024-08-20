@@ -1,5 +1,3 @@
-{% load utils %}
-
 <div class="m-5 rounded-lg">
     <!-- pagination search bar and table title -->
     <div class="bg-[#0b141a] grid grid-cols-3 px-6 py-3 text-gray-300 font-bold">
@@ -30,8 +28,8 @@
             {% for row in rows %}
                 <tr class="bg-[#2a3942] border-b border-[#202b32] text-gray-300 hover:bg-teal-800">
                     {% for field in headers %}
-                        {% if field != 'Action' %}
-                            <td scope="row" class="px-6 py-4 whitespace-nowrap">{{ row.field|lower }}</td>
+                        {% if field != 'action' %}
+                            <td scope="row" class="px-6 py-4 whitespace-nowrap">{{ row.field }}</td>
                         {% endif %}
                     {% endfor %}
                 </tr>
