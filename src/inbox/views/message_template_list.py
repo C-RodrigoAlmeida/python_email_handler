@@ -40,12 +40,11 @@ class MessageTemplatesListView(ListView, LoginRequiredMixin):
         search = self.request.GET.get('search', '')
         if search:
             context['search'] = search
-            
+        
         try:
             context['pagination'] = paginator.page(page)
         except PageNotAnInteger:
             context['pagination'] = paginator.page(1)
         except EmptyPage:
             context['pagination'] = paginator.page(paginator.num_pages)
-
         return context
