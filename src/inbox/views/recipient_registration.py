@@ -1,12 +1,13 @@
 from typing import Any
 from django.urls import reverse_lazy
 from django.views.generic import CreateView
+from django.contrib.auth.mixins import LoginRequiredMixin
 from src.inbox.forms.recipient_registration import RecipientRegistrationForm
 from src.inbox.models.recipient import Recipient
 
 
 
-class RecipientCreateView(CreateView):
+class RecipientCreateView(CreateView, LoginRequiredMixin):
     model = Recipient
     form_class = RecipientRegistrationForm
     template_name = "recipient_management.html"

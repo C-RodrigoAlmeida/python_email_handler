@@ -3,8 +3,9 @@ from django.urls import reverse_lazy
 from src.inbox.models.message_template import MessageTemplate
 from src.inbox.forms.message_update import MessageUpdateForm
 from django.views.generic import UpdateView
+from django.contrib.auth.mixins import LoginRequiredMixin
 
-class MessageTemplateUpdateView(UpdateView):
+class MessageTemplateUpdateView(UpdateView, LoginRequiredMixin):
     model = MessageTemplate
     form_class = MessageUpdateForm
     template_name = 'message_template_management.html'

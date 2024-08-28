@@ -3,9 +3,10 @@ from django.urls import reverse_lazy
 from django.views.generic import CreateView
 from src.inbox.models.message_template import MessageTemplate
 from src.inbox.forms.message_registration import MessageTemplateForm
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 
-class MessageTemplateCreateView(CreateView):
+class MessageTemplateCreateView(CreateView, LoginRequiredMixin):
     model = MessageTemplate
     form_class = MessageTemplateForm
     template_name = "message_template_management.html"
