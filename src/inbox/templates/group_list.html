@@ -1,67 +1,6 @@
 {% extends 'base.html' %}
 {% load table_tags %}
-
+ 
 {% block content %}
-    {% render_table headers rows title table_url controls search %}
+    {% render_table headers rows title table_url controls search row_update row_delete %}
 {% endblock %}
-
-{% comment %} {% extends 'base.html' %}
-
-{% block content %}
-<div class="m-5 rounded-lg">
-
-    <div class="bg-[#0b141a] grid grid-cols-3 px-6 py-3 text-gray-300 font-bold">
-        <div>
-        </div>
-        <div class="text-center text-white text-3xl">
-            <p>Group List</p>
-        </div>
-        <form action="" method="GET" class="flex items-center px-10 gap-1">
-            <p>SEARCH:</p>
-            <input type="text" value="{{ search }}" name="search" class="w-full bg-inherit border-b-2 border-gray-300 focus:outline-none focus:border-teal-800 text-white p-2 cursor-pointer">
-            <button type="submit" class="bg-[#8696a0] hover:bg-teal-800 text-white p-2 rounded mt-3 cursor-pointer">
-                <i class="fa-solid fa-magnifying-glass"></i>
-            </button>
-            <a href="{% url 'inbox:recipient_list' %}" class="bg-[#8696a0] hover:bg-teal-800 text-white p-2 rounded mt-3 cursor-pointer">
-                <i class="fa-solid fa-xmark"></i>
-            </a>
-        </form>
-    </div>
-    <table class="w-full text-sm text-left rtl:text-right text-gray-500">
-        <thead class="text-xs font-bold text-gray-300 uppercase">
-            <tr class="bg-[#202c33]">
-                <th class="px-6 py-3">Name</th>
-                <th>Description</th>
-                <th>Action</th>
-            </tr>
-        </thead>
-        <tbody>
-
-        {% for group in groups %}
-            <tr class="bg-[#2a3942] border-b border-[#202b32] text-gray-300 hover:bg-teal-800">
-                <td class="px-6 py-4 whitespace-nowrap">
-                    {{ group.name }}
-                </td>
-                <td scope="row">
-                    {{ group.description }}
-                </td>
-                <td>
-                    <a href="{% url 'inbox:group_update' group.id %}" class="mr-2">
-                        <i class="fa-regular fa-pen-to-square"></i>
-                    </a>
-                    <a href="{% url 'inbox:group_delete' group.id %}" class="ml-2">
-                        <i class="fa-regular fa-trash-can"></i>
-                    </a>
-                </td>
-            </tr>
-        {% empty %}
-            <tr>
-                <td colspan="5" class="text-center py-4">No Group registered</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
-    {% include 'pagination_controls.html' %}
-</div>
-{% endblock %} {% endcomment %}

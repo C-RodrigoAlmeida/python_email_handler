@@ -42,6 +42,8 @@ class GroupListView(ListView, LoginRequiredMixin):
         context['title'] = "Group List"
         context['headers'] = ['name', 'description', 'action']
         context['table_url'] = 'inbox:group_list'
+        context['row_update'] = "{% url 'inbox:group_update' group.id %}"
+        context['row_delete'] = "{% url 'inbox:group_delete' group.id %}"
 
         paginator = Paginator(queryset, self.paginate_by)
         page = self.request.GET.get('page')
