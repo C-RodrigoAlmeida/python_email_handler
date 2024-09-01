@@ -1,7 +1,5 @@
 from src.inbox.models.message_template import MessageTemplate
-from src.user.models.custom_user import CustomUser
 from django.db.models import Q
-from django.shortcuts import get_object_or_404
 from django.views.generic import ListView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.exceptions import PermissionDenied
@@ -11,15 +9,14 @@ from django.core.paginator import PageNotAnInteger
 
 class MessageTemplatesListView(ListView, LoginRequiredMixin):
     model = MessageTemplate
-    template_name = "message_template_list.html"
-    context_object_name = "templates"
+    template_name = "object_list.html"
+    context_object_name = "rows"
     paginate_by = 10
 
     def get_queryset(self):
         if not self.request.user.is_authenticated:
             raise PermissionDenied
         
-        self.custom_user = get_object_or_404(CustomUser, id=self.request.user.id)
         search = self.request.GET.get('search', '')
         if search:
             return MessageTemplate.objects.filter(
@@ -29,13 +26,23 @@ class MessageTemplatesListView(ListView, LoginRequiredMixin):
                    | Q(description__icontains=search))
             ).order_by('subject')
 
-        return MessageTemplate.objects.filter(Q(message_owner=self.custom_user) & Q(deleted_at__isnull=True) ).order_by('subject')
+        return MessageTemplate.objects.filter(Q(message_owner=self.request.user) & Q(deleted_at__isnull=True) ).order_by('subject')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['custom_user'] = self.custom_user
+    
+        context['custom_user'] = self.request.user
+        context['title'] = "Message Template List"
+        context['headers'] = ['subject', 'description', 'action']
+        context['table_url'] = 'inbox:message_template_list'
+        context['row_update'] = "inbox:message_template_update"
+        context['row_delete'] = "inbox:message_template_delete"
+
+
+
         paginator = Paginator(self.object_list, self.paginate_by)
         page = self.request.GET.get('page')
+        
 
         search = self.request.GET.get('search', '')
         if search:

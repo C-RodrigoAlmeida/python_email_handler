@@ -8,15 +8,15 @@ from django.db.models import Q
 
 class RecipientListView(LoginRequiredMixin, ListView):
     model = Recipient
-    template_name = "recipient_list.html"
-    context_object_name = "recipients"
+    template_name = "object_list.html"
+    context_object_name = "rows"
     paginate_by = 10
 
     def get_queryset(self):
         search = self.request.GET.get('search', '')
         if search:
             return Recipient.objects.filter(
-                Q(contact_owner=self.custom_user) 
+                Q(contact_owner=self.request.user) 
                 & Q(deleted_at__isnull=True) 
                 & (Q(name__icontains=search) 
                    | Q(last_name__icontains=search) 
@@ -24,11 +24,17 @@ class RecipientListView(LoginRequiredMixin, ListView):
                     |Q(employee_id__icontains=search))
             ).order_by('name')
         else:
-            return Recipient.objects.filter(Q(contact_owner=self.custom_user) & Q(deleted_at__isnull=True)).order_by('name')
+            return Recipient.objects.filter(Q(contact_owner=self.request.user) & Q(deleted_at__isnull=True)).order_by('name')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['custom_user'] = self.custom_user
+        
+        context["custom_user"] = self.request.user
+        context["title"] = "Group List"
+        context["headers"] = ["employee_id", "name", "last_name", "email", "action"]
+        context["table_url"] = "inbox:recipient_list"
+        context["row_update"] = "inbox:recipient_update"
+        context["row_delete"] = "inbox:recipient_delete"
 
         search = self.request.GET.get('search', '')
         if search:
