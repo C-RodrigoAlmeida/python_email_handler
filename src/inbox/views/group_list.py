@@ -2,6 +2,7 @@ from django.shortcuts import get_object_or_404
 from django.core.exceptions import PermissionDenied
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.db.models import Q
+from django.urls import reverse
 from django.views.generic import ListView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from src.inbox.models.group import Group
@@ -42,8 +43,8 @@ class GroupListView(ListView, LoginRequiredMixin):
         context['title'] = "Group List"
         context['headers'] = ['name', 'description', 'action']
         context['table_url'] = 'inbox:group_list'
-        context['row_update'] = "{% url 'inbox:group_update' group.id %}"
-        context['row_delete'] = "{% url 'inbox:group_delete' group.id %}"
+        context['row_update'] = "inbox:group_update"
+        context['row_delete'] = "inbox:group_delete"
 
         paginator = Paginator(queryset, self.paginate_by)
         page = self.request.GET.get('page')
