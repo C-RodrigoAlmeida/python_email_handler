@@ -12,11 +12,11 @@
     <body class="w-full text-black">
         {% if user.is_authenticated %}
         <div class="flex w-full">
-            {% include 'sidebar.html' %}
+            {% include 'components/sidebar.html' %}
             <div class="w-5/6 bg-[#111b21] overflow-auto">
 
         {% else %}
-        {% include 'navbar.html' %}
+        {% include 'components/navbar.html' %}
         <div class='bg-[#111b21] min-h-screen min-w-screen'>
             <div>
         {% endif %}
