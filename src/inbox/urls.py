@@ -1,22 +1,22 @@
 from django.urls import path
 
 # Message Imports
-from src.inbox.views.message_template_creation import MessageTemplateCreateView
-from src.inbox.views.message_template_list import MessageTemplatesListView
-from src.inbox.views.message_template_update import MessageTemplateUpdateView
-from src.inbox.views.message_template_delete import MessageTemplateDeleteView
+from src.inbox.views.message_template.message_template_creation import MessageTemplateCreateView
+from src.inbox.views.message_template.message_template_list import MessageTemplatesListView
+from src.inbox.views.message_template.message_template_update import MessageTemplateUpdateView
+from src.inbox.views.message_template.message_template_delete import MessageTemplateDeleteView
 
 # Recipient Imports
-from src.inbox.views.recipient_registration import RecipientCreateView
-from src.inbox.views.recipient_list import RecipientListView
-from src.inbox.views.recipient_update import RecipientUpdateView
-from src.inbox.views.recipient_delete import RecipientDeleteView
+from src.inbox.views.recipient.recipient_registration import RecipientCreateView
+from src.inbox.views.recipient.recipient_list import RecipientListView
+from src.inbox.views.recipient.recipient_update import RecipientUpdateView
+from src.inbox.views.recipient.recipient_delete import RecipientDeleteView
 
 # Group Imports
-from src.inbox.views.group_registration import GroupRegistrationView
-from src.inbox.views.group_list import GroupListView
-from src.inbox.views.group_update import GroupUpdateView
-from src.inbox.views.group_delete import GroupDeleteView
+from src.inbox.views.group.group_registration import GroupRegistrationView
+from src.inbox.views.group.group_list import GroupListView
+from src.inbox.views.group.group_update import GroupUpdateView
+from src.inbox.views.group.group_delete import GroupDeleteView
 
 # Email Imports
 from src.inbox.views.email_send import EmailSend
