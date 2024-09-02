@@ -9,8 +9,8 @@ class SentMessage(BaseModel):
     sent_by = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     subject = models.CharField(max_length=255)
     message = models.TextField()
-    recipients = models.ManyToManyField(Recipient, related_name="messages")
-    groups = models.ManyToManyField(Group, related_name="messages")
+    recipients = models.CharField(max_length=2000)
+    groups = models.CharField(max_length=2000)
 
     class Meta:
         constraints = [
