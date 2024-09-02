@@ -38,20 +38,18 @@ class MessageTemplatesListView(ListView, LoginRequiredMixin):
         context['row_update'] = "inbox:message_template_update"
         context['row_delete'] = "inbox:message_template_delete"
 
-
-
         paginator = Paginator(self.object_list, self.paginate_by)
         page = self.request.GET.get('page')
-        
 
         search = self.request.GET.get('search', '')
         if search:
             context['search'] = search
         
         try:
-            context['pagination'] = paginator.page(page)
+            context['controls'] = paginator.page(page)
         except PageNotAnInteger:
-            context['pagination'] = paginator.page(1)
+            context['controls'] = paginator.page(1)
         except EmptyPage:
-            context['pagination'] = paginator.page(paginator.num_pages)
+            context['controls'] = paginator.page(paginator.num_pages)
+
         return context
