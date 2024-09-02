@@ -52,13 +52,42 @@
     <div class="pagination items-center justify-center text-gray-300 text-md font-medium bg-[#202c33] flex mx-auto">
         <span class="step-links flex items-center justify-center w-1/4">
             {% if controls.has_previous %}
-                <a class="flex items-center justify-center px-1 h-8 font-medium text-white bg-[#202c33] rounded hover:bg-teal-800" href="?page=1{% if search %}&search={{ search }}{% endif %}">&laquo; First</a>
-                <a class="flex items-center justify-center px-1 h-8 font-medium text-white bg-[#202c33] rounded hover:bg-teal-800" href="?page={{ controls.previous_page_number }}{% if search %}&search={{ search }}{% endif %}">Previous</a>
+                <a 
+                    class="flex items-center justify-center px-1 h-8 font-medium text-white bg-[#202c33] rounded hover:bg-teal-800" 
+                    href="?page=1{% if search %}&search={{ search }}{% endif %}"
+                >
+                    <i class="fa-solid fa-backward"></i>
+                </a>
+
+                <a 
+                    class="flex items-center justify-center px-1 h-8 font-medium text-white bg-[#202c33] rounded hover:bg-teal-800" 
+                    href="?page={{ controls.previous_page_number }}{% if search %}&search={{ search }}{% endif %}"
+                >
+                    <i class="fa-solid fa-caret-left"></i>
+                </a>
+
             {% endif %}
-            <span class="current text-gray-700 dark:text-gray-400">Page <span class="font-semibold text-gray-900 dark:text-white">{{ controls.number }}</span> of <span class="font-semibold text-gray-900 dark:text-white">{{ controls.paginator.num_pages }}</span>.</span>
+            <span 
+                class="current text-gray-700 dark:text-gray-400"
+            >
+                Page <span class="font-semibold text-gray-900 dark:text-white">{{ controls.number }}</span> 
+                of <span class="font-semibold text-gray-900 dark:text-white">{{ controls.paginator.num_pages }}</span>.
+            </span>
+
             {% if controls.has_next %}
-                <a class="flex items-center justify-center px-1 h-8 font-medium text-white bg-[#202c33] rounded hover:bg-teal-800" href="?page={{ controls.next_page_number }}{% if search %}&search={{ search }}{% endif %}">Next</a>
-                <a class="flex items-center justify-center px-1 h-8 font-medium text-white bg-[#202c33] rounded hover:bg-teal-800" href="?page={{ controls.paginator.num_pages }}{% if search %}&search={{ search }}{% endif %}">Last &raquo;</a>
+                <a 
+                    class="flex items-center justify-center px-1 h-8 font-medium text-white bg-[#202c33] rounded hover:bg-teal-800" 
+                    href="?page={{ controls.next_page_number }}{% if search %}&search={{ search }}{% endif %}"
+                >
+                    <i class="fa-solid fa-caret-right"></i>
+                </a>
+
+                <a 
+                    class="flex items-center justify-center px-1 h-8 font-medium text-white bg-[#202c33] rounded hover:bg-teal-800" 
+                    href="?page={{ controls.paginator.num_pages }}{% if search %}&search={{ search }}{% endif %}"
+                >
+                    <i class="fa-solid fa-forward"></i>
+                </a>
             {% endif %}
         </span>
     </div>
