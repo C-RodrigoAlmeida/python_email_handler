@@ -1,4 +1,5 @@
 from django.db import models
 
 class FontAwesomeIcons(models.TextChoices):
-    pass
+    people_group = "fa-solid fa-people-group"
+    user = "fa-regular fa-user"
