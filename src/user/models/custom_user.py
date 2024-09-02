@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 from src.core.validators import alphanumeric
-from src.core.base_model import BaseModel
+from src.core.models.base_model import BaseModel
 from django.contrib.auth.models import BaseUserManager
 
 class CustomUserManager(BaseUserManager):

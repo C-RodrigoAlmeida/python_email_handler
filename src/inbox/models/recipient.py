@@ -1,5 +1,5 @@
 from django.db import models
-from src.core.base_model import BaseModel
+from src.core.models.base_model import BaseModel
 from src.core.validators import alphanumeric
 
 # Create your models here.

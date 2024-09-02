@@ -2,7 +2,7 @@ from django.db import models
 from django.db.models import Q
 from src.inbox.models.group import Group
 from src.inbox.models.recipient import Recipient
-from src.core.base_model import BaseModel
+from src.core.models.base_model import BaseModel
 from django.conf import settings
 
 class SentMessage(BaseModel):

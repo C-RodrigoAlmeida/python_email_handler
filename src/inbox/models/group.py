@@ -1,6 +1,6 @@
 from django.db import models
 from src.inbox.models.recipient import Recipient
-from src.core.base_model import BaseModel
+from src.core.models.base_model import BaseModel
 
 class Group(BaseModel):
     name = models.CharField(max_length=100)
