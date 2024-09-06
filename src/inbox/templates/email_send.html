@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load numeric_tags%}
 
 {% block content %}
 <div class="m-5 rounded-lg">
@@ -22,13 +23,18 @@
                 </select> 
                 
                 {% if request.GET.to_method == 'manual' %}
-                <input type="text" name="to" class="block basis-4/5 p-2.5 border border-gray-300 rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white"></input>
-
+                <input 
+                    type="text"
+                    name="to"
+                    class="block basis-4/5 p-2.5 border border-gray-300 rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+                    value="{{ request.GET.to }}"
+                >
+                
                 {% elif request.GET.to_method == 'recipient' %}
                 <select name="to" id="" class="block basis-4/5 p-2.5 border border-gray-300 rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white">
                     <option selected value="">Select an option</option>
                     {% for recipient in recipients %}
-                        <option {% if recipient.pk == request.GET.to %} selected {% endif %} value="{{ recipient.pk }}">{{ recipient }}</option>
+                        <option {% if recipient.pk == request.GET.to|to_int %} selected {% endif %} value="{{ recipient.pk }}">{{ recipient }}</option>
                     {% endfor %}
                 </select>
 
@@ -36,7 +42,7 @@
                 <select name="to" id="" class="block basis-4/5 p-2.5 border border-gray-300 rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white">
                     <option selected value="">Select an option</option>
                     {% for group in groups %}
-                    <option value="{{ group.id }}">{{ group }}</option>
+                    <option {% if group.id == request.GET.to|to_int %} selected {% endif %} value="{{ group.id }}">{{ group }}</option>
                     {% endfor %}
                 </select>
 
@@ -45,13 +51,11 @@
                 {% endif %}
 
             </div>
-
         </div>
 
         <div id="content_method" class="mb-5">
             <p class="text-white">Email Content: </p>
-            <div class="flex gap-3">
-                
+            <div class="flex gap-3 mb-5">
                 <select 
                     name="content_method" 
                     class="block basis-1/5 p-2.5 border border-gray-300 rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white"
@@ -60,18 +64,42 @@
                     <option selected disabled value="none">Select an option</option>
                     <option {% if request.GET.content_method == 'manual' %} selected {% endif %} value="manual">Manual</option>
                     <option {% if request.GET.content_method == 'template' %} selected {% endif %} value="template">Message Template</option>
-         
+        
                 </select> 
-                
                 {% if request.GET.content_method == 'manual' %}
-                <p class="text-white">manual selected</p>
+                <input
+                    type="text"
+                    name="subject"
+                    class="block basis-4/5 p-2.5 border border-gray-300 rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+                    value="{{ request.GET.subject }}"
+                    placeholder="{% if request.GET.subject %}{{ request.GET.subject }}{% else %}Subject{% endif %}"
+                >
 
                 {% elif request.GET.content_method == 'template' %}
-                <p class="text-white">templated selected</p>
-                {% endif %}
+                <select 
+                    name="content_method" 
+                    class="block basis-4/5 p-2.5 border border-gray-300 rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+                    onchange="this.form.submit()"
+                >
+                <option selected disabled value="none">Select an option</option>
+                    {% for template in templates %}
+                        <option {% if template.pk == request.GET.content|to_int %} selected {% endif %} value="{{ template.pk }}">{{ template }}</option>
+                    {% endfor %}
+                </select> 
 
+                {% endif %}
             </div>
 
+            <textarea
+                name="content"
+                class="block p-2.5 w-full border border-gray-300 rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+            >
+                {% if request.GET.content_method == 'template' %}
+                    {{ template.content }}
+                {% elif request.GET.content_method == 'manual' %}
+                    {{ request.GET.content }}
+                {% endif %}
+            </textarea>
         </div>
     </form>
 </div>          
