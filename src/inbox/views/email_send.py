@@ -40,13 +40,10 @@ class EmailSend(TemplateView, LoginRequiredMixin):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
 
-        context['fields'] = ['to', 'cc', 'bcc']
+        context['fields'] = ['to', 'cc', 'cco']
 
         if self.request.GET.get('content_method', None) == 'template':
-            context['templates'] = MessageTemplate.objects.filter(
-                message_owner=self.request.user,
-                deleted_at__isnull=True
-            ).order_by('subject')
+            context['templates'] = self.get_templates()
 
         if self.request.GET.get('template_subject', None):
             context['content'] = MessageTemplate.objects.get(id=self.request.GET.get('template_subject')).content
@@ -55,15 +52,27 @@ class EmailSend(TemplateView, LoginRequiredMixin):
         cc_method = self.request.GET.get('cc_method', None)
 
         if to_method == 'recipient' or cc_method == 'recipient':
-            context['recipients'] = Recipient.objects.filter(
-                contact_owner=self.request.user,
-                deleted_at__isnull=True
-            ).order_by('name')
+            context['recipients'] = self.get_recipients()
 
         if to_method == 'group' or cc_method == 'group':
-            context['groups'] = Group.objects.filter(
-                group_owner=self.request.user,
-                deleted_at__isnull=True
-            ).order_by('name')
+            context['groups'] = self.get_groups()
 
         return context
+    
+    def get_recipients(self):
+        return Recipient.objects.filter(
+            contact_owner=self.request.user,
+            deleted_at__isnull=True
+        ).order_by('name')
+    
+    def get_groups(self):
+        return Group.objects.filter(
+            group_owner=self.request.user,
+            deleted_at__isnull=True
+        ).order_by('name')
+    
+    def get_templates(self):
+        return MessageTemplate.objects.filter(
+            message_owner=self.request.user,
+            deleted_at__isnull=True
+        ).order_by('subject')
