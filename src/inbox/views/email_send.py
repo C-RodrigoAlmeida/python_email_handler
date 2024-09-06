@@ -46,7 +46,10 @@ class EmailSend(TemplateView, LoginRequiredMixin):
             context['templates'] = MessageTemplate.objects.filter(
                 message_owner=self.request.user,
                 deleted_at__isnull=True
-            ).order_by('subject')    
+            ).order_by('subject')
+
+        if self.request.GET.get('template_subject', None):
+            context['content'] = MessageTemplate.objects.get(id=self.request.GET.get('template_subject')).content
        
         to_method = self.request.GET.get('to_method', None)
         cc_method = self.request.GET.get('cc_method', None)

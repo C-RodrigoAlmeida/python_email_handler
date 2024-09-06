@@ -77,13 +77,13 @@
 
                 {% elif request.GET.content_method == 'template' %}
                 <select 
-                    name="content_method" 
+                    name="template_subject" 
                     class="block basis-4/5 p-2.5 border border-gray-300 rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white"
                     onchange="this.form.submit()"
                 >
-                <option selected disabled value="none">Select an option</option>
+                <option selected disabled value="0">Select an option</option>
                     {% for template in templates %}
-                        <option {% if template.pk == request.GET.content|to_int %} selected {% endif %} value="{{ template.pk }}">{{ template }}</option>
+                        <option {% if template.pk == request.GET.template_subject|to_int %} selected {% endif %} value="{{ template.pk }}">{{ template }}</option>
                     {% endfor %}
                 </select> 
 
@@ -95,7 +95,7 @@
                 class="block p-2.5 w-full border border-gray-300 rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white"
             >
                 {% if request.GET.content_method == 'template' %}
-                    {{ template.content }}
+                    {{ content }}
                 {% elif request.GET.content_method == 'manual' %}
                     {{ request.GET.content }}
                 {% endif %}
