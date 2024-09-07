@@ -1,56 +1,28 @@
 {% extends 'base.html' %}
-{% load numeric_tags%}
+{% load render_email_fields %}
+{% load numeric_tags %}
 
 {% block content %}
 <div class="m-5 rounded-lg">
     <h1 class="text-3xl text-white mb-5">Send an E-mail</h1>
-
     <form action="{% url 'inbox:email_send' %}" method="GET">
+        
+        <!-- To Section -->
         <div id="to_method" class="mb-5">
             <p class="text-white">To:</p>
-            <div class="flex gap-3">
-                
-                <select 
-                    name="to_method" 
-                    class="block basis-1/5 p-2.5 border border-gray-300 rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white"
-                    onchange="this.form.submit()"
-                >
-                    <option selected disabled value="">Select an option</option>
-                    <option {% if request.GET.to_method == 'manual' %} selected {% endif %} value="manual">Manual</option>
-                    <option {% if request.GET.to_method == 'recipient' %} selected {% endif %} value="recipient">In Contacts</option>
-                    <option {% if request.GET.to_method == 'group' %} selected {% endif %} value="group">Group</option>
-                    <option {% if request.GET.to_method == 'file' %} selected {% endif %} value="file">Contacts in File</option>
-                </select> 
-                
-                {% if request.GET.to_method == 'manual' %}
-                <input 
-                    type="text"
-                    name="to"
-                    class="block basis-4/5 p-2.5 border border-gray-300 rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white"
-                    value="{{ request.GET.to }}"
-                >
-                
-                {% elif request.GET.to_method == 'recipient' %}
-                <select name="to" id="" class="block basis-4/5 p-2.5 border border-gray-300 rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white">
-                    <option selected value="">Select an option</option>
-                    {% for recipient in recipients %}
-                        <option {% if recipient.pk == request.GET.to|to_int %} selected {% endif %} value="{{ recipient.pk }}">{{ recipient }}</option>
-                    {% endfor %}
-                </select>
+            {% render_email_field request.GET.to_method 'to' recipients groups request.GET.to %}
+        </div>
 
-                {% elif request.GET.to_method == 'group' %}
-                <select name="to" id="" class="block basis-4/5 p-2.5 border border-gray-300 rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white">
-                    <option selected value="">Select an option</option>
-                    {% for group in groups %}
-                    <option {% if group.id == request.GET.to|to_int %} selected {% endif %} value="{{ group.id }}">{{ group }}</option>
-                    {% endfor %}
-                </select>
+        <!-- CC Section -->
+        <div id="cc_method" class="mb-5">
+            <p class="text-white">CC:</p>
+            {% render_email_field request.GET.cc_method 'cc' recipients groups request.GET.cc %}
+        </div>
 
-                {% elif request.GET.to_method == 'file' %}
-                    <input type="file" name"to" id="file" class="block basis-4/5 p-2.5 border border-gray-300 rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white">
-                {% endif %}
-
-            </div>
+        <!-- CCO Section -->
+        <div id="cco_method" class="mb-5">
+            <p class="text-white">CCO:</p>
+            {% render_email_field request.GET.cco_method 'cco' recipients groups request.GET.cco %}
         </div>
 
         <div id="content_method" class="mb-5">
@@ -58,46 +30,47 @@
             <div class="flex gap-3 mb-5">
                 <select 
                     name="content_method" 
-                    class="block basis-1/5 p-2.5 border border-gray-300 rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+                    class="block basis-1/5 p-2.5 border border-gray-300 rounded-lg bg-gray-700 border-gray-600 text-white"
                     onchange="this.form.submit()"
                 >
-                    <option selected disabled value="none">Select an option</option>
-                    <option {% if request.GET.content_method == 'manual' %} selected {% endif %} value="manual">Manual</option>
+                    <option {% if request.GET.content_method == 'manual' or not request.GET.to_method %} selected {% endif %} value="manual">
+                        Manual
+                    </option>
                     <option {% if request.GET.content_method == 'template' %} selected {% endif %} value="template">Message Template</option>
         
-                </select> 
-                {% if request.GET.content_method == 'manual' %}
-                <input
-                    type="text"
-                    name="subject"
-                    class="block basis-4/5 p-2.5 border border-gray-300 rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white"
-                    value="{{ request.GET.subject }}"
-                    placeholder="{% if request.GET.subject %}{{ request.GET.subject }}{% else %}Subject{% endif %}"
-                >
+                </select>
 
-                {% elif request.GET.content_method == 'template' %}
-                <select 
-                    name="template_subject" 
-                    class="block basis-4/5 p-2.5 border border-gray-300 rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white"
-                    onchange="this.form.submit()"
-                >
-                <option selected disabled value="0">Select an option</option>
-                    {% for template in templates %}
-                        <option {% if template.pk == request.GET.template_subject|to_int %} selected {% endif %} value="{{ template.pk }}">{{ template }}</option>
-                    {% endfor %}
-                </select> 
+                {% if request.GET.content_method == 'template' %}
+                    <select 
+                        name="template_subject" 
+                        class="block basis-4/5 p-2.5 border border-gray-300 rounded-lg bg-gray-700 border-gray-600 text-white"
+                        onchange="this.form.submit()"
+                    >
+                    <option selected disabled value="0">Select an option</option>
+                        {% for template in templates %}
+                            <option {% if template.pk == request.GET.template_subject|to_int %} selected {% endif %} value="{{ template.pk }}">{{ template }}</option>
+                        {% endfor %}
+                    </select> 
 
+                {% else %}
+                    <input
+                        type="text"
+                        name="subject"
+                        class="block basis-4/5 p-2.5 border border-gray-300 rounded-lg bg-gray-700 border-gray-600 text-white"
+                        value="{{ request.GET.subject }}"
+                        placeholder="{% if request.GET.subject %}{{ request.GET.subject }}{% else %}Subject{% endif %}"
+                    >
                 {% endif %}
             </div>
 
             <textarea
                 name="content"
-                class="block p-2.5 w-full border border-gray-300 rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+                class="block p-2.5 w-full border border-gray-300 rounded-lg bg-gray-700 border-gray-600 text-white"
             >
                 {% if request.GET.content_method == 'template' %}
-                    {{ content }}
-                {% elif request.GET.content_method == 'manual' %}
-                    {{ request.GET.content }}
+                    {{ content|safe }}
+                {% else %}
+                    {{ request.GET.content|safe }}
                 {% endif %}
             </textarea>
         </div>

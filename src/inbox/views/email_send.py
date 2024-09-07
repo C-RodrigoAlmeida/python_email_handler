@@ -31,16 +31,17 @@ class EmailSend(TemplateView, LoginRequiredMixin):
                 need_redirect = True
 
         if need_redirect:
-            encoded_params = urllib.parse.urlencode(merged_params)
-            new_url = f"{reverse('inbox:email_send')}?{encoded_params}"
-            return HttpResponseRedirect(new_url)
+            return HttpResponseRedirect(
+                f"{reverse('inbox:email_send')}?{urllib.parse.urlencode(merged_params)}"
+            )
 
         return super().get(request, *args, **kwargs)
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
 
-        context['fields'] = ['to', 'cc', 'cco']
+        context['fields'] = {}
+        context['fields']['inclusion_test'] = 'tested'
 
         if self.request.GET.get('content_method', None) == 'template':
             context['templates'] = self.get_templates()
