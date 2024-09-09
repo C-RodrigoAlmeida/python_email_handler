@@ -6,25 +6,12 @@
 <div class="m-5 rounded-lg">
     <h1 class="text-3xl text-white mb-5">Send an E-mail</h1>
     <form action="{% url 'inbox:email_send' %}" method="GET">
-        
-        <!-- To Section -->
-        <div id="to_method" class="mb-5">
-            <p class="text-white">To:</p>
-            {% render_email_field request.GET.to_method 'to' recipients groups request.GET.to %}
-        </div>
-
-        <!-- CC Section -->
-        <div id="cc_method" class="mb-5">
-            <p class="text-white">CC:</p>
-            {% render_email_field request.GET.cc_method 'cc' recipients groups request.GET.cc %}
-        </div>
-
-        <!-- CCO Section -->
-        <div id="cco_method" class="mb-5">
-            <p class="text-white">CCO:</p>
-            {% render_email_field request.GET.cco_method 'cco' recipients groups request.GET.cco %}
-        </div>
-
+        {% for field in fields %}
+            <div id="to_method" class="mb-5">
+                <p class="text-white uppercase">{{ field }}:</p>
+                {% render_email_field request field recipients groups %}
+            </div>
+        {% endfor %}
         <div id="content_method" class="mb-5">
             <p class="text-white">Email Content: </p>
             <div class="flex gap-3 mb-5">

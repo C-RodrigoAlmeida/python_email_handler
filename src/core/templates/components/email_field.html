@@ -10,7 +10,6 @@
         <option {% if method == 'group' %} selected {% endif %} value="group">Group</option>
         <option {% if method == 'file' %} selected {% endif %} value="file">Contacts in File</option>
     </select> 
-
     {% if method == 'manual' or not method %}
     <input 
         type="text"

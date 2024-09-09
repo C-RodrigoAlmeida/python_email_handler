@@ -40,8 +40,7 @@ class EmailSend(TemplateView, LoginRequiredMixin):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
 
-        context['fields'] = {}
-        context['fields']['inclusion_test'] = 'tested'
+        context['fields'] = ['to', 'cc', 'cco']
 
         if self.request.GET.get('content_method', None) == 'template':
             context['templates'] = self.get_templates()
