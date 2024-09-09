@@ -33,6 +33,12 @@
         {% endfor %}
     </select>
     {% elif method == 'file' %}
-    <input type="file" name="{{ field_name }}" class="block basis-4/5 p-2.5 border border-gray-300 rounded-lg bg-gray-700 border-gray-600 text-white">
+    <select name="{{ field_name }}_xlsx_column" class="block basis-1/5 p-2.5 border border-gray-300 rounded-lg bg-gray-700 border-gray-600 text-white">
+        <option selected value="">Select a column</option>
+        {% for column in columns %}
+            <option {% if column == field_name_xlsx_column %} selected {% endif %} value="{{ column }}">{{ column }}</option>
+        {% endfor %}
+    </select>
+    <input type="file" name="{{ field_name }}" class="block basis-3/5 p-2.5 border border-gray-300 rounded-lg bg-gray-700 border-gray-600 text-white">
     {% endif %}
 </div>
