@@ -50,11 +50,12 @@ class EmailSend(TemplateView, LoginRequiredMixin):
        
         to_method = self.request.GET.get('to_method', None)
         cc_method = self.request.GET.get('cc_method', None)
+        cco_method = self.request.GET.get('cco_method', None)
 
-        if to_method == 'recipient' or cc_method == 'recipient':
+        if to_method == 'recipient' or cc_method == 'recipient' or cco_method == 'recipient':
             context['recipients'] = self.get_recipients()
 
-        if to_method == 'group' or cc_method == 'group':
+        if to_method == 'group' or cc_method == 'group' or cco_method == 'group':
             context['groups'] = self.get_groups()
 
         return context
