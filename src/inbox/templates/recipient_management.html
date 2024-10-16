@@ -9,22 +9,22 @@
             {% csrf_token %}
             <div class="grid grid-cols-2 gap-4 mb-4">
                 <div>
-                    <label for="{{ form.name.id_for_label }}" class="block text-sm font-medium uppercase">First Name:</label>
+                    <label for="{{ form.name.id_for_label }}" class="block text-sm font-medium uppercase">Primeiro nome:</label>
                     {{ form.name }}
                 </div>
                 <div>
-                    <label for="{{ form.last_name.id_for_label }}" class="block text-sm font-medium uppercase">Last Name:</label>
+                    <label for="{{ form.last_name.id_for_label }}" class="block text-sm font-medium uppercase">Sobrenome:</label>
                     {{ form.last_name }}
                 </div>
             </div>
            
             <div class="grid grid-cols-2 gap-4 mb-4">
                 <div>
-                    <label for="{{ form.employee_id.id_for_label }}" class="block text-sm font-medium uppercase">Employee ID:</label>
+                    <label for="{{ form.employee_id.id_for_label }}" class="block text-sm font-medium uppercase">Chave Petrobras:</label>
                     {{ form.employee_id }}
                 </div>
                 <div>
-                    <label for="{{ form.email.id_for_label }}" class="block text-sm font-medium uppercase">Email:</label>
+                    <label for="{{ form.email.id_for_label }}" class="block text-sm font-medium uppercase">E-mail:</label>
                     {{ form.email }}
                 </div>
             </div>

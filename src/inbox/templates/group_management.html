@@ -8,18 +8,18 @@
             {% csrf_token %}
 
             <div class="mb-4">
-                <label for="{{ form.subject.id_for_label }}" class="block text-sm font-medium uppercase">Name:</label>
+                <label for="{{ form.subject.id_for_label }}" class="block text-sm font-medium uppercase">Nome:</label>
                 {{ form.name }}
             </div>
 
             <div class="mb-4">
-                <label for="{{ form.description.id_for_label }}" class="block text-sm font-medium uppercase">Description:</label>
+                <label for="{{ form.description.id_for_label }}" class="block text-sm font-medium uppercase">Descrição:</label>
                 {{ form.description }}
             </div>
             
             {% if form.not_included_recipients %}
                 <div class="mb-2">
-                    <label for="" class="block text-center text-sm font-medium uppercase">Recipients:</label>
+                    <label for="" class="block text-center text-sm font-medium uppercase">Destinatários:</label>
                 </div>
             {% endif %}
             <div class="mb-4 {% if form.not_included_recipients %}grid grid-cols-2 gap-4{% endif %}">

@@ -5,7 +5,7 @@
 {% block content %}
 <div class="min-h-full max-w-full">
     <div class="self-center p-10 m-5 bg-[#202c33] rounded-lg shadow text-gray-300 max-w-full">
-        <h1 class="text-3xl text-white mb-5 text-center">Send an E-mail</h1>
+        <h1 class="text-3xl text-white mb-5 text-center">Enviar um e-mail</h1>
         <form action="{% url 'inbox:email_send' %}" method="GET">
             {% for field in fields %}
                 <div id="to_method" class="mb-2">
@@ -14,7 +14,7 @@
                 </div>
             {% endfor %}
             <div id="content_method" class="mb-2">
-                <p class="text-white">Email Content: </p>
+                <p class="text-white">Conteúdo do e-mail: </p>
                 <div class="flex gap-3 mb-5">
                     <select 
                         name="content_method" 
@@ -24,7 +24,7 @@
                         <option {% if request.GET.content_method == 'manual' or not request.GET.to_method %} selected {% endif %} value="manual">
                             Manual
                         </option>
-                        <option {% if request.GET.content_method == 'template' %} selected {% endif %} value="template">Message Template</option>
+                        <option {% if request.GET.content_method == 'template' %} selected {% endif %} value="template">Template da Mensagem</option>
             
                     </select>
 
@@ -34,7 +34,7 @@
                             class="block basis-4/5 p-2.5 form-control backdrop-blur bg-[#202c33] mb-2 border-b-2 border-gray-300 w-full focus:outline-none focus:border-teal-800"
                             onchange="this.form.submit()"
                         >
-                        <option selected disabled value="0">Select an option</option>
+                        <option selected disabled value="0">Selecione uma opção</option>
                             {% for template in templates %}
                                 <option {% if template.pk == request.GET.template_subject|to_int %} selected {% endif %} value="{{ template.pk }}">{{ template }}</option>
                             {% endfor %}

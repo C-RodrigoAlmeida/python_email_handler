@@ -8,17 +8,17 @@
             {% csrf_token %}
 
             <div class="mb-4">
-                <label for="{{ form.subject.id_for_label }}" class="block text-sm font-medium uppercase">Subject:</label>
+                <label for="{{ form.subject.id_for_label }}" class="block text-sm font-medium uppercase">Assunto:</label>
                 {{ form.subject }}
             </div>
 
             <div class="mb-4">
-                <label for="{{ form.description.id_for_label }}" class="block text-sm font-medium uppercase">Description:</label>
+                <label for="{{ form.description.id_for_label }}" class="block text-sm font-medium uppercase">Descrição:</label>
                 {{ form.description }}
             </div>
             
             <div class="mb-4">
-                <label for="{{ form.content.id_for_label }}" class="block text-sm font-medium uppercase">Content:</label>
+                <label for="{{ form.content.id_for_label }}" class="block text-sm font-medium uppercase">Conteúdo:</label>
                 {{ form.content }}
             </div>
             <input type="submit" value="{{ template_button }}" class="w-full bg-[#8696a0] hover:bg-teal-800 text-white p-2 rounded mt-3 cursor-pointer">
