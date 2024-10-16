@@ -3,32 +3,32 @@
 {% block content %}
 <div class="flex items-center justify-center min-h-screen">
     <div class="p-10 m-5 bg-[#202c33] rounded-lg shadow text-gray-300">
-        <h1 class="text-center text-3xl mb-10">Registration</h1>
+        <h1 class="text-center text-3xl mb-10">Cadastro</h1>
         <form action="" method="post">
             {% csrf_token %}
             <div class="grid grid-cols-2 gap-4 mb-4">
                 <div>
-                    <label for="{{ form.first_name.id_for_label }}" class="block text-sm font-medium uppercase">First Name:</label>
+                    <label for="{{ form.first_name.id_for_label }}" class="block text-sm font-medium uppercase">Primeiro nome:</label>
                     {{ form.first_name }}
                 </div>
                 <div>
-                    <label for="{{ form.last_name.id_for_label }}" class="block text-sm font-medium uppercase">Last Name:</label>
+                    <label for="{{ form.last_name.id_for_label }}" class="block text-sm font-medium uppercase">Sobrenome:</label>
                     {{ form.last_name }}
                 </div>
             </div>
 
             <div class="mb-4">
-                <label for="{{ form.email.id_for_label }}" class="block text-sm font-medium uppercase">Email:</label>
+                <label for="{{ form.email.id_for_label }}" class="block text-sm font-medium uppercase">E-mail:</label>
                 {{ form.email }}
             </div>
             
             <div class="grid grid-cols-2 gap-4 mb-4">
                 <div>
-                    <label for="{{ form.employee_id.id_for_label }}" class="block text-sm font-medium uppercase">Employee ID:</label>
+                    <label for="{{ form.employee_id.id_for_label }}" class="block text-sm font-medium uppercase">Chave Petrobras:</label>
                     {{ form.employee_id }}
                 </div>
                 <div>
-                    <label for="{{ form.password.id_for_label }}" class="block text-sm font-medium uppercase">Password:</label>
+                    <label for="{{ form.password.id_for_label }}" class="block text-sm font-medium uppercase">Senha:</label>
                     {{ form.password }}
                 </div>
             </div>

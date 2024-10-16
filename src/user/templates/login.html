@@ -8,11 +8,11 @@
             {% csrf_token %}
             <div class='flex gap-4'>
                 <div>
-                    <label for="{{ form.username.id_for_label }}" class="block text-sm font-medium uppercase">Employee ID:</label>
+                    <label for="{{ form.username.id_for_label }}" class="block text-sm font-medium uppercase">Chave Petrobras</label>
                     {{ form.username }}
                 </div>
                 <div>
-                    <label for="{{ form.password.id_for_label }}" class="block text-sm font-medium uppercase">Password:</label>
+                    <label for="{{ form.password.id_for_label }}" class="block text-sm font-medium uppercase">Senha:</label>
                     {{ form.password }}
                 </div>
             </div>
