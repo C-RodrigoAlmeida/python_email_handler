@@ -6,9 +6,9 @@
         onchange="this.form.submit()"
     >
         <option {% if method == 'manual' or not method %} selected {% endif %} value="manual">Manual</option>
-        <option {% if method == 'recipient' %} selected {% endif %} value="recipient">In Contacts</option>
-        <option {% if method == 'group' %} selected {% endif %} value="group">Group</option>
-        <option {% if method == 'file' %} selected {% endif %} value="file">Contacts in File</option>
+        <option {% if method == 'recipient' %} selected {% endif %} value="recipient">De contatos</option>
+        <option {% if method == 'group' %} selected {% endif %} value="group">Grupo</option>
+        <option {% if method == 'file' %} selected {% endif %} value="file">Extrair de arquivo</option>
     </select> 
     {% if method == 'manual' or not method %}
     <input 
@@ -20,21 +20,21 @@
     >
     {% elif method == 'recipient' %}
     <select name="{{ field_name }}" class="block basis-4/5 p-2.5 form-control backdrop-blur bg-[#202c33] mb-2 border-b-2 border-gray-300 w-full focus:outline-none focus:border-teal-800">
-        <option selected value="">Select an option</option>
+        <option selected value="">Selecione uma opção</option>
         {% for recipient in recipients %}
             <option {% if recipient.pk == value|to_int %} selected {% endif %} value="{{ recipient.pk }}">{{ recipient }}</option>
         {% endfor %}
     </select>
     {% elif method == 'group' %}
     <select name="{{ field_name }}" class="block basis-4/5 p-2.5 form-control backdrop-blur bg-[#202c33] mb-2 border-b-2 border-gray-300 w-full focus:outline-none focus:border-teal-800">
-        <option selected value="">Select an option</option>
+        <option selected value="">Selecione uma opção</option>
         {% for group in groups %}
             <option {% if group.id == value|to_int %} selected {% endif %} value="{{ group.id }}">{{ group }}</option>
         {% endfor %}
     </select>
     {% elif method == 'file' %}
     <select name="{{ field_name }}_xlsx_column" class="block basis-1/5 p-2.5 form-control backdrop-blur bg-[#202c33] mb-2 border-b-2 border-gray-300 w-full focus:outline-none focus:border-teal-800">
-        <option selected value="">Select a column</option>
+        <option selected value="">Selecione uma coluna</option>
         {% for column in columns %}
             <option {% if column == field_name_xlsx_column %} selected {% endif %} value="{{ column }}">{{ column }}</option>
         {% endfor %}
