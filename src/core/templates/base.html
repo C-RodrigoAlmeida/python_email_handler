@@ -8,15 +8,15 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     </head>
 
-    <body class="w-full text-black">
+    <body class="w-full text-black font-family: Trebuchet MS, Arial, sans-serif;">
         {% if user.is_authenticated %}
         <div class="flex w-full">
             {% include 'components/sidebar.html' %}
-            <div class="w-5/6 bg-[#111b21] overflow-auto">
+            <div class="w-5/6 bg-[#1A1A1D] overflow-auto">
 
         {% else %}
         {% include 'components/navbar.html' %}
-        <div class='bg-[#111b21] min-h-screen min-w-screen'>
+        <div class='bg-[#1A1A1D] min-h-screen min-w-screen'>
             <div>
         {% endif %}
 

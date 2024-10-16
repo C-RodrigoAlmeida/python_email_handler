@@ -1,13 +1,13 @@
-<div class="bg-[#202c33] w-1/6 h-screen z-0 shadow-2xl text-gray-300">
+<div class="bg-[#2B2B2B] w-1/6 h-screen z-0 shadow-2xl text-[#B0B0B0]">
     <div class="h-full overflow-y-auto">
         <ul class="ssd font-medium">
             <li>
-                <div class="justify-center w-full border-b-2 border-[#2a3942] pb-10 pt-10">
+                <div class="justify-center w-full border-b-2 border-[#3A3A3A] pb-10 pt-10">
                     <a href="{%url 'user:panel' %}" class="text-6xl font-semibold">EasyMail</a>
                 </div>
             </li>
             <li>
-                <button type="button" class="flex items-center w-full p-2 transition duration-75 group hover:bg-gradient-to-r from-cyan-900 to-emerald-900" aria-controls="dropdown-example" data-collapse-toggle="dropdown-example">
+                <button type="button" class="flex items-center w-full p-2" aria-controls="dropdown-example" data-collapse-toggle="dropdown-example">
                     <i class="fa-solid fa-envelopes-bulk text-xl"></i>
                     <span class="flex-1 ms-3 text-left font-bold rtl:text-right whitespace-nowrap">Caixa de Entrada</span>
                     <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
@@ -16,17 +16,15 @@
                 </button>
                 <ul id="dropdown-example" class="py-2">
                     <li>
-                       <a href="{% url 'inbox:email_send' %}" class="flex items-center w-full p-2 transition duration-75 pl-11 group hover:bg-teal-800">
-                            Enviar e-mail
-                        </a>
+                       <a href="{% url 'inbox:email_send' %}" class="flex items-center w-full p-2 transition duration-75 pl-11 group hover:bg-[#4B4E6D]">Enviar e-mail</a>
                     </li>
                     <li>
-                       <a href="{% url 'inbox:message_template_list' %}" class="flex items-center w-full p-2 transition duration-75 pl-11 group hover:bg-teal-800">Visualizar e-mails enviados</a>
+                       <a href="{% url 'inbox:message_template_list' %}" class="flex items-center w-full p-2 transition duration-75 pl-11 group hover:bg-[#4B4E6D]">Visualizar e-mails enviados</a>
                     </li>
               </ul>
             </li>
             <li>
-                <button type="button" class="flex items-center w-full p-2 transition duration-75 group hover:bg-gradient-to-r from-cyan-900 to-emerald-900" aria-controls="dropdown-example" data-collapse-toggle="dropdown-example">
+                <button type="button" class="flex items-center w-full p-2" aria-controls="dropdown-example" data-collapse-toggle="dropdown-example">
                     <i class="fa-solid fa-envelope text-xl"></i>
                     <span class="flex-1 ms-3 text-left font-bold rtl:text-right whitespace-nowrap">Mensagens</span>
                     <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
@@ -35,15 +33,15 @@
               </button>
               <ul id="dropdown-example" class="py-2">
                     <li>
-                       <a href="{% url 'inbox:message_template_creation' %}" class="flex items-center w-full p-2 transition duration-75 pl-11 group hover:bg-teal-800">Criar novo template</a>
+                       <a href="{% url 'inbox:message_template_creation' %}" class="flex items-center w-full p-2 transition duration-75 pl-11 group hover:bg-[#4B4E6D]">Criar novo template</a>
                     </li>
                     <li>
-                       <a href="{% url 'inbox:message_template_list' %}" class="flex items-center w-full p-2 transition duration-75 pl-11 group hover:bg-teal-800">Visualizar lista de templates</a>
+                       <a href="{% url 'inbox:message_template_list' %}" class="flex items-center w-full p-2 transition duration-75 pl-11 group hover:bg-[#4B4E6D]">Visualizar lista de templates</a>
                     </li>
               </ul>
             </li>
             <li>
-                <button type="button" class="flex items-center w-full p-2 transition duration-75 group hover:bg-gradient-to-r from-cyan-900 to-emerald-900" aria-controls="dropdown-example" data-collapse-toggle="dropdown-example">
+                <button type="button" class="flex items-center w-full p-2" aria-controls="dropdown-example" data-collapse-toggle="dropdown-example">
                     <i class="fa-solid fa-user text-xl"></i>
                     <span class="flex-1 ms-3 text-left font-bold rtl:text-right whitespace-nowrap">Destinatários</span>
                     <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
@@ -52,15 +50,15 @@
                 </button>
                 <ul id="dropdown-example" class="py-2">
                     <li>
-                       <a href="{% url 'inbox:recipient_registration' %}" class="flex items-center w-full p-2 transition duration-75 pl-11 group hover:bg-teal-800">Registrar novo destinatário</a>
+                       <a href="{% url 'inbox:recipient_registration' %}" class="flex items-center w-full p-2 transition duration-75 pl-11 group hover:bg-[#4B4E6D]">Registrar novo destinatário</a>
                     </li>
                     <li>
-                       <a href="{% url 'inbox:recipient_list' %}" class="flex items-center w-full p-2 transition duration-75 pl-11 group hover:bg-teal-800">Visualizar lista de destinatários</a>
+                       <a href="{% url 'inbox:recipient_list' %}" class="flex items-center w-full p-2 transition duration-75 pl-11 group hover:bg-[#4B4E6D]">Visualizar lista de destinatários</a>
                     </li>
                 </ul>
             </li>
             <li>
-                <button type="button" class="flex items-center w-full p-2 transition duration-75 group hover:bg-gradient-to-r from-cyan-900 to-emerald-900" aria-controls="dropdown-example" data-collapse-toggle="dropdown-example">
+                <button type="button" class="flex items-center w-full p-2" aria-controls="dropdown-example" data-collapse-toggle="dropdown-example">
                     <i class="fa-solid fa-users text-xl"></i>
                     <span class="flex-1 ms-3 text-left font-bold rtl:text-right whitespace-nowrap">Grupos</span>
                     <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
@@ -69,22 +67,22 @@
                 </button>
                 <ul id="dropdown-example" class="py-2">
                     <li>
-                       <a href="{% url 'inbox:group_registration' %}" class="flex items-center w-full p-2 transition duration-75 pl-11 group hover:bg-teal-800">Criar novo grupo</a>
+                       <a href="{% url 'inbox:group_registration' %}" class="flex items-center w-full p-2 transition duration-75 pl-11 group hover:bg-[#4B4E6D]">Criar novo grupo</a>
                     </li>
                     <li>
-                       <a href="{% url 'inbox:group_list' %}" class="flex items-center w-full p-2 transition duration-75 pl-11 group hover:bg-teal-800">Visualizar lista de grupos</a>
+                       <a href="{% url 'inbox:group_list' %}" class="flex items-center w-full p-2 transition duration-75 pl-11 group hover:bg-[#4B4E6D]">Visualizar lista de grupos</a>
                     </li>
               </ul>
             </li>
 
             <ul class="flex">
                 <li>
-                    <a href="{% url 'user:profile' %}" class="flex items-center w-full p-2 transition duration-75 group hover:bg-teal-800">Perfil</a>
+                    <a href="{% url 'user:profile' %}" class="flex items-center w-full p-2 transition duration-75 group hover:bg-[#4B4E6D]">Perfil</a>
                 </li>    
                 <li>
                     <form action="{% url 'user:logout' %}" method="POST">
                         {% csrf_token %}
-                        <input type="submit" value="Logout" class="flex items-center w-full p-2 transition duration-75 group hover:bg-teal-800">
+                        <input type="submit" value="Logout" class="flex items-center w-full p-2 transition duration-75 group hover:bg-[#4B4E6D]">
                     </form>
                 </li>
             </ul>
